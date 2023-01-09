@@ -6,11 +6,12 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 17:06:33 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/06 18:20:16 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/09 16:03:53 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <iomanip>
 #include "Contact.hpp"
 
 Contact::Contact(void)
@@ -23,43 +24,89 @@ Contact::~Contact(void)
     return;
 }
 
-int Contact::contactId = 0;
+int Contact::_contactId = 0;
 
 int Contact::getContactId()
 {
-    return (this->contactId);
+    return (this->_contactId - 1);
 }
 
-void Contact::getContactInfo(void)
+void Contact::displayContact(void)
 {
-    std::string first_name;
-    std::string last_name;
-    std::string nick_name;
-    std::string phone_number;
-    std::string darkest_secret;
-
-    setContactId();
-    std::cout << "Enter first name: ";
-    std::getline(std::cin, first_name);
-    setFirstName(first_name);
-    std::cout << "Enter last name: ";
-    std::getline(std::cin, last_name);
-    setLastName(last_name);
-    std::cout << "Enter nick name: ";
-    std::getline(std::cin, nick_name);
-    setNickName(nick_name);
-    std::cout << "Enter phone number: ";
-    std::getline(std::cin, phone_number);
-    setPhoneNumber(phone_number);
-    std::cout << "Enter darkest secret: ";
-    std::getline(std::cin, darkest_secret);
-    setDarkestSecret(darkest_secret);
     std::cout << std::endl;
+    std::cout << std::left << std::setw(18) << "First name: "; 
+    std::cout << getFirstName() << std::endl;
+    std::cout << std::left << std::setw(18) << "Last name: ";
+    std::cout << getLastName() << std::endl;
+    std::cout << std::left << std::setw(18) << "Nick name: ";
+    std::cout << getNickName() << std::endl;
+    std::cout << std::left << std::setw(18) << "Phone number: ";
+    std::cout << getPhoneNumber() << std::endl;
+    std::cout << std::left << std::setw(18) << "Darkest secret: ";
+    std::cout << getDarkestSecret() << std::endl;
+    std::cout << std::endl;
+}
+
+bool isEmptyField(std::string input)
+{
+    size_t i = 0;
+    size_t count = 0;
+    
+    while (i < input.length())
+    {
+        if (input[i] == '\n' || input[i] == '\t' || input[i] == ' ')
+            count++;
+        i++;
+    }
+    if (count == i)
+        return (true);
+    return (false);
+}
+
+bool Contact::askUserInput(std::string prompt, std::string type)
+{
+    std::string input;
+    
+    std::cout << prompt;
+    std::getline(std::cin, input);
+    if (isEmptyField(input))
+    {
+        std::cout << std::endl << "Field cannot remain empty. Please try again." << std::endl; 
+        return (false);
+    }
+    if (type == "firstname")
+        setFirstName(input);
+    else if (type == "lastname")
+        setLastName(input);
+    else if (type == "nickname")
+        setNickName(input);
+    else if (type == "phonenum")
+        setPhoneNumber(input);
+    else
+        setDarkestSecret(input);
+    return (true);
+}    
+
+bool Contact::getContactInfo(void)
+{
+    setContactId();
+    if (!askUserInput("Enter first name: ", "firstname"))
+        return (false);
+    if (!askUserInput("Enter last name: ", "lastname"))
+        return (false);
+    if (!askUserInput("Enter nick name: ", "nickname"))
+        return (false);
+    if (!askUserInput("Enter phone number: ", "phonenum"))
+        return (false);
+    if (!askUserInput("Enter darkest secret: ", "darksecret"))
+        return (false);
+    std::cout << std::endl;
+    return (true);
 }
 
 void Contact::setContactId(void)
 {
-    this->contactId++;
+    this->_contactId++;
 }
 
 void Contact::setFirstName(std::string first_name)
