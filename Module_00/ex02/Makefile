@@ -3,40 +3,48 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: hqureshi <hqureshi@student.42.fr>            +#+                      #
+#    By: tvan-der <tvan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2022/06/22 10:34:59 by hqureshi      #+#    #+#                  #
-#    Updated: 2023/01/01 17:28:47 by Tessa         ########   odam.nl          #
+#    Created: 2023/01/10 12:43:46 by tvan-der      #+#    #+#                  #
+#    Updated: 2023/01/10 13:50:47 by tvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= megaphone
-CC			= g++ # or c++?
-CFLAGS		= -Wall -Werror -Wextra -std=c++98
+-include $(DEPS)
 
-SRCS		= megaphone.cpp
+NAME		= 		Account
+CC			= 		g++
+CFLAGS		= 		-Wall -Werror -Wextra -std=c++98
 
-OBJS		= $(SRCS:.cpp=.o)
+HEADER		= 		Account.hpp
 
-all:		$(NAME)
+SRCS		= 		Account.cpp \
+					tests.cpp
+				
+OBJS_DIR 	= 		objs
+OBJS		= 		$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
+DEPS		= 		$(OBJS:.o=.d)
 
-#linking objects files to make executable
-$(NAME):	$(OBJS)
-			@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-			@echo "\033[0;32mCompilation completed!\033[0m"
+all:				$(NAME)
 
-#compiling cpp files in order to generate .o files
-%.o: %.cpp
-			@$(CC) $(CFLAGS) -o $@ -c $^
+$(NAME):			$(OBJS)
+					@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+					@echo "\033[0;32mCompilation completed!\033[0m"
 
+$(OBJS_DIR)/%.o:	%.cpp | $(OBJS_DIR)
+					@$(CC) $(CFLAGS) -MMD -o $@ -c $<
+
+$(OBJS_DIR):
+					@mkdir -p $@
+	
 clean:
-			@rm -f $(OBJS)
-			@echo "\033[0;31mCleaned!\033[0m"
+					@rm -rf $(OBJS_DIR)
+					@echo "\033[0;31mCleaned!\033[0m"
 
 fclean:
-			@rm -f $(NAME)
-			@echo "\033[0;31mCleaned!\033[0m"
+					@rm -f $(NAME)
+					@echo "\033[0;31mCleaned!\033[0m"
 
-re:			fclean all
+re:					clean fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:				all clean fclean re

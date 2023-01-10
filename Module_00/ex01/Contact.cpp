@@ -6,12 +6,10 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 17:06:33 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/09 16:03:53 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/10 14:24:13 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <iomanip>
 #include "Contact.hpp"
 
 Contact::Contact(void)
@@ -47,21 +45,21 @@ void Contact::displayContact(void)
     std::cout << std::endl;
 }
 
-bool isEmptyField(std::string input)
-{
-    size_t i = 0;
-    size_t count = 0;
+// bool isEmptyField(std::string input)
+// {
+//     size_t i = 0;
+//     size_t count = 0;
     
-    while (i < input.length())
-    {
-        if (input[i] == '\n' || input[i] == '\t' || input[i] == ' ')
-            count++;
-        i++;
-    }
-    if (count == i)
-        return (true);
-    return (false);
-}
+//     while (i < input.length())
+//     {
+//         if (input[i] == '\n' || input[i] == '\t' || input[i] == ' ')
+//             count++;
+//         i++;
+//     }
+//     if (count == i)
+//         return (true);
+//     return (false);
+// }
 
 bool Contact::askUserInput(std::string prompt, std::string type)
 {
@@ -69,9 +67,9 @@ bool Contact::askUserInput(std::string prompt, std::string type)
     
     std::cout << prompt;
     std::getline(std::cin, input);
-    if (isEmptyField(input))
+    if (input.empty())
     {
-        std::cout << std::endl << "Field cannot remain empty. Please try again." << std::endl; 
+        std::cout << std::endl << "Field cannot remain empty. Please try again.\n" << std::endl; 
         return (false);
     }
     if (type == "firstname")
@@ -89,7 +87,8 @@ bool Contact::askUserInput(std::string prompt, std::string type)
 
 bool Contact::getContactInfo(void)
 {
-    setContactId();
+    setContactId('+');
+    std::cout << std::endl;
     if (!askUserInput("Enter first name: ", "firstname"))
         return (false);
     if (!askUserInput("Enter last name: ", "lastname"))
@@ -104,9 +103,12 @@ bool Contact::getContactInfo(void)
     return (true);
 }
 
-void Contact::setContactId(void)
+void Contact::setContactId(char c)
 {
-    this->_contactId++;
+    if (c == '-')
+        this->_contactId--;
+    else
+        this->_contactId++;
 }
 
 void Contact::setFirstName(std::string first_name)

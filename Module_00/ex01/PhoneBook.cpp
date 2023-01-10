@@ -6,13 +6,11 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 19:22:29 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/09 16:39:02 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/10 14:25:08 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <iomanip>
-#include <sstream>
 
 PhoneBook::PhoneBook(void)
 {
@@ -53,14 +51,16 @@ void PhoneBook::add(void)
     Contact contact;
     
     if (!contact.getContactInfo())
+    {
+        contact.setContactId('-');
         return;
+    }
     saveContact(contact, contact.getContactId());
-    std::cout << std::endl << "Added contact to phonebook!" << std::endl;
+    std::cout << "Added contact to phonebook!\n" << std::endl;
 }
 
 void PhoneBook::saveContact(Contact contact, int id)
 {
-    std::cout << "ID = " << id << std::endl;
     this->contacts[id % 8] = contact;
 }
 
@@ -77,17 +77,18 @@ int PhoneBook::searchEntry(std::string input)
 
 int PhoneBook::checkAmountContacts(Contact *contacts)
 {
-    for (int i = 0; i < 8; i++)
+    int i;
+    
+    for (i = 0; i < 8; i++)
     {
-        if (isEmptyField(contacts[i].getFirstName()) && \
-                isEmptyField(contacts[i].getLastName()) && \
-                isEmptyField(contacts[i].getNickName()) && \
-                isEmptyField(contacts[i].getPhoneNumber()) && \
-                isEmptyField(contacts[i].getDarkestSecret()))
+        if (contacts[i].getFirstName().empty() && \
+                contacts[i].getLastName().empty() && \
+                contacts[i].getNickName().empty() && \
+                contacts[i].getPhoneNumber().empty() && \
+                contacts[i].getDarkestSecret().empty())
             return (i);
-        contacts[i].displayContact();
     }
-    return (0);
+    return (i);
 }
 
 void PhoneBook::printHeader(void)
@@ -110,11 +111,7 @@ void PhoneBook::search(void)
     
     int count = checkAmountContacts(this->contacts);
     if (count < 1)
-    {
-        std::cout << "hi\n";
         return;
-    }
-    std::cout << "COUNT = " << count << std::endl;
     printHeader();
     for (int i = 0; i < count; i++)
     {
@@ -126,9 +123,8 @@ void PhoneBook::search(void)
     std::cout << "Choose an entry index: ";
     std::getline(std::cin, input);
     int index = searchEntry(input);
-    std::cout << "INDEX = " << index << std::endl;
     if (index < 1 || index > 8 || index > count)
-        std::cout << "Sorry, entry does not exist" << std::endl;
+        std::cout << "Sorry, entry does not exist.\n" << std::endl;
     else
         this->contacts[index - 1].displayContact();
 }

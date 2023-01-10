@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 12:27:53 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/09 14:46:57 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/10 11:04:14 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CONTACT_H
 
 #include <string>
+#include <iostream>
+#include <iomanip>
 
 class Contact {
 	private:
@@ -32,7 +34,7 @@ class Contact {
 		bool getContactInfo(void);
 		bool askUserInput(std::string prompt, std::string type);
 		
-		void setContactId(void);
+		void setContactId(char c);
 		void setFirstName(std::string first_name);
 		void setLastName(std::string last_name);
 		void setNickName(std::string nick_name);
@@ -45,9 +47,7 @@ class Contact {
 		std::string getNickName(void);
 		std::string getPhoneNumber(void);
 		std::string getDarkestSecret(void);
-
 };
-
 
 bool isEmptyField(std::string input);
 
