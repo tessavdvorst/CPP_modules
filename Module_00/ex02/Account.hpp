@@ -19,7 +19,7 @@
 class Account {
     public:
 
-        typedef Account		t; // alias only to be used in class
+        typedef Account		t;
 
         static int	getNbAccounts( void );
         static int	getTotalAmount( void );
@@ -32,8 +32,8 @@ class Account {
 
         void	makeDeposit( int deposit );
         bool	makeWithdrawal( int withdrawal );
-        int		checkAmount( void ) const; // does not modify 
-        void	displayStatus( void ) const; // does not modify
+        int		checkAmount( void ) const;
+        void	displayStatus( void ) const;
 
 
     private:

@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 17:06:33 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/10 14:24:13 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/11 11:24:29 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,6 @@ void Contact::displayContact(void)
     std::cout << getDarkestSecret() << std::endl;
     std::cout << std::endl;
 }
-
-// bool isEmptyField(std::string input)
-// {
-//     size_t i = 0;
-//     size_t count = 0;
-    
-//     while (i < input.length())
-//     {
-//         if (input[i] == '\n' || input[i] == '\t' || input[i] == ' ')
-//             count++;
-//         i++;
-//     }
-//     if (count == i)
-//         return (true);
-//     return (false);
-// }
 
 bool Contact::askUserInput(std::string prompt, std::string type)
 {
