@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.cpp                                           :+:    :+:            */
+/*   Weapon.hpp                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/11 19:41:05 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/11 21:59:30 by Tessa         ########   odam.nl         */
+/*   Created: 2023/01/11 22:03:47 by Tessa         #+#    #+#                 */
+/*   Updated: 2023/01/11 22:11:45 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-int main(void)
-{
-   int N = 5;
-   Zombie* zHorde;
+# include <iostream> 
 
-    zHorde = zombieHorde(N, "foo");
-
-    for (int i = 0; i < N; i++)
-        zHorde[i].announce();
+class Weapon {
+    private:
+        std::string _type;
         
-    delete[] zHorde;
-    // what other tests
-    // how to check for leaks?
-    return (0);
-}
+    public:
+        Weapon(void);
+        ~Weapon(void);
+        
+        std::string& getType(void);
+        void setType(std::string type);
+};
+
+#endif

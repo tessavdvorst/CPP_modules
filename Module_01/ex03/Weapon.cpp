@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Zombie.cpp                                         :+:    :+:            */
+/*   Weapon.cpp                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/11 20:10:07 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/11 21:57:55 by Tessa         ########   odam.nl         */
+/*   Created: 2023/01/11 22:07:39 by Tessa         #+#    #+#                 */
+/*   Updated: 2023/01/11 22:12:34 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-Zombie::Zombie(void)
+Weapon::Weapon(void)
 {
-    std::cout << "Constructor called" << std::endl;
     return;
 }
 
-Zombie::~Zombie(void)
+Weapon::~Weapon(void)
 {
-    std::cout << "Destructor called" << std::endl;
     return;
 }
 
-void Zombie::setName(std::string name)
+std::string& Weapon::getType(void)
 {
-    this->_name = name;
+    std::string& typeREF = this->_type;
+    return (typeREF);
 }
 
-std::string Zombie::getName(void)
+void Weapon::setType(std::string type)
 {
-    return (this->_name);
-}
-
-void Zombie::announce(void)
-{
-    std::cout << getName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
+    this->_type = type;
 }

@@ -5,25 +5,26 @@
 /*                                                     +:+                    */
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/11 19:41:05 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/11 21:59:30 by Tessa         ########   odam.nl         */
+/*   Created: 2023/01/11 21:22:04 by Tessa         #+#    #+#                 */
+/*   Updated: 2023/01/11 22:00:22 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
 
 int main(void)
 {
-   int N = 5;
-   Zombie* zHorde;
+    std::string string = "HI THIS IS BRAIN";
+    std::string* stringPTR = &string;
+    std::string& stringREF = string;
 
-    zHorde = zombieHorde(N, "foo");
-
-    for (int i = 0; i < N; i++)
-        zHorde[i].announce();
-        
-    delete[] zHorde;
-    // what other tests
-    // how to check for leaks?
+    std::cout << "Memory address of string: " << &string << std::endl;
+    std::cout << "Memory address of stringPTR: " << stringPTR << std::endl;
+    std::cout << "Memory address of stringREF: " << &stringREF << std::endl;
+    
+    std::cout << "Value of string: " << string << std::endl;
+    std::cout << "Value of stringPTR: " << *stringPTR << std::endl;
+    std::cout << "Value of stringREF: " << stringREF << std::endl;
+    
     return (0);
 }
