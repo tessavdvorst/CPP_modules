@@ -6,25 +6,25 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 12:27:53 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/10 11:04:14 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/11 17:41:39 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_H
 # define CONTACT_H
 
-#include <string>
-#include <iostream>
-#include <iomanip>
+# include <string>
+# include <iostream>
+# include <iomanip>
 
 class Contact {
 	private:
 		static int _contactId;
-		std::string _first_name;
-		std::string _last_name;
-		std::string _nick_name;
-		std::string _phone_number;
-		std::string _darkest_secret;
+		std::string _firstName;
+		std::string _lastName;
+		std::string _nickName;
+		std::string _phoneNumber;
+		std::string _darkestSecret;
 	
 	public:
 		Contact(void);
@@ -32,14 +32,14 @@ class Contact {
 		
 		void displayContact(void);
 		bool getContactInfo(void);
-		bool askUserInput(std::string prompt, std::string type);
+		bool setUserInput(std::string prompt, std::string type);
 		
 		void setContactId(char c);
-		void setFirstName(std::string first_name);
-		void setLastName(std::string last_name);
-		void setNickName(std::string nick_name);
-		void setPhoneNumber(std::string phone_number);
-		void setDarkestSecret(std::string darkest_secret);
+		void setFirstName(std::string firstName);
+		void setLastName(std::string lastName);
+		void setNickName(std::string nickName);
+		void setPhoneNumber(std::string phoneNumber);
+		void setDarkestSecret(std::string darkestSecret);
 
 		int getContactId(void);
 		std::string getFirstName(void);
@@ -48,7 +48,5 @@ class Contact {
 		std::string getPhoneNumber(void);
 		std::string getDarkestSecret(void);
 };
-
-bool isEmptyField(std::string input);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 17:06:33 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/11 11:24:29 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/11 17:41:50 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void Contact::displayContact(void)
     std::cout << std::endl;
 }
 
-bool Contact::askUserInput(std::string prompt, std::string type)
+bool Contact::setUserInput(std::string prompt, std::string type)
 {
     std::string input;
     
@@ -73,15 +73,15 @@ bool Contact::getContactInfo(void)
 {
     setContactId('+');
     std::cout << std::endl;
-    if (!askUserInput("Enter first name: ", "firstname"))
+    if (!setUserInput("Enter first name: ", "firstname"))
         return (false);
-    if (!askUserInput("Enter last name: ", "lastname"))
+    if (!setUserInput("Enter last name: ", "lastname"))
         return (false);
-    if (!askUserInput("Enter nick name: ", "nickname"))
+    if (!setUserInput("Enter nick name: ", "nickname"))
         return (false);
-    if (!askUserInput("Enter phone number: ", "phonenum"))
+    if (!setUserInput("Enter phone number: ", "phonenum"))
         return (false);
-    if (!askUserInput("Enter darkest secret: ", "darksecret"))
+    if (!setUserInput("Enter darkest secret: ", "darksecret"))
         return (false);
     std::cout << std::endl;
     return (true);
@@ -95,52 +95,52 @@ void Contact::setContactId(char c)
         this->_contactId++;
 }
 
-void Contact::setFirstName(std::string first_name)
+void Contact::setFirstName(std::string firstName)
 {
-    this->_first_name = first_name;
+    this->_firstName = firstName;
 }
 
-void Contact::setLastName(std::string last_name)
+void Contact::setLastName(std::string lastName)
 {    
-    this->_last_name = last_name;
+    this->_lastName = lastName;
 }
 
-void Contact::setNickName(std::string nick_name)
+void Contact::setNickName(std::string nickName)
 {    
-    this->_nick_name = nick_name;
+    this->_nickName = nickName;
 }
 
-void Contact::setPhoneNumber(std::string phone_number)
+void Contact::setPhoneNumber(std::string phoneNumber)
 {    
-    this->_phone_number = phone_number;
+    this->_phoneNumber = phoneNumber;
 }
 
-void Contact::setDarkestSecret(std::string darkest_secret)
+void Contact::setDarkestSecret(std::string darkestSecret)
 {    
-    this->_darkest_secret = darkest_secret;
+    this->_darkestSecret = darkestSecret;
 }
 
 std::string Contact::getFirstName(void)
 {
-    return (this->_first_name);
+    return (this->_firstName);
 }
 
 std::string Contact::getLastName(void)
 {
-    return (this->_last_name);
+    return (this->_lastName);
 }
 
 std::string Contact::getNickName(void)
 {
-    return (this->_nick_name);
+    return (this->_nickName);
 }
 
 std::string Contact::getPhoneNumber(void)
 {
-    return (this->_phone_number);
+    return (this->_phoneNumber);
 }
 
 std::string Contact::getDarkestSecret(void)
 {
-    return (this->_darkest_secret);
+    return (this->_darkestSecret);
 }

@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 12:28:35 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/10 12:55:28 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/11 17:38:05 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class PhoneBook {
         std::string truncAndAddDot(std::string);
         int checkAmountContacts(Contact *contacts);
         void printHeader(void);
-        void printContactInFormat(Contact contact);
+        void printEntry(Contact contact);
         void search(void);
         int searchEntry(std::string input);
         void saveContact(Contact contact, int id);

@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/05 19:22:29 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/10 14:25:08 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/11 17:38:17 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ std::string PhoneBook::truncAndAddDot(std::string str)
     return (trunc_str);
 }
 
-void PhoneBook::printContactInFormat(Contact contact)
+void PhoneBook::printEntry(Contact contact)
 { 
     std::cout << std::right << std::setw(10) << truncAndAddDot(contact.getFirstName());
     std::cout << "|";
@@ -117,7 +117,7 @@ void PhoneBook::search(void)
     {
         std::cout << std::right << std::setw(10) << (i + 1);
         std::cout << "|";
-        printContactInFormat(this->contacts[i]);
+        printEntry(this->contacts[i]);
     }
     std::cout << std::endl;
     std::cout << "Choose an entry index: ";
