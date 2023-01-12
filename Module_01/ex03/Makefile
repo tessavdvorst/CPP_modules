@@ -6,14 +6,14 @@
 #    By: tvan-der <tvan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/10 12:43:46 by tvan-der      #+#    #+#                  #
-#    Updated: 2023/01/11 22:03:27 by Tessa         ########   odam.nl          #
+#    Updated: 2023/01/12 12:45:57 by tvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 -include $(DEPS)
 
 NAME		= 		ex03
-CC			= 		g++
+CC			= 		c++
 CFLAGS		= 		-Wall -Werror -Wextra -std=c++98
 
 SRCS		= 		main.cpp \
