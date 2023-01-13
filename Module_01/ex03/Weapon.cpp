@@ -6,21 +6,20 @@
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/11 22:07:39 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/12 15:40:16 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/13 15:55:48 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string weapon)
+Weapon::Weapon(std::string type) : _type(type)
 {
-    setType(weapon);
     return;
 }
 
 Weapon::~Weapon(void)
 {
-    return;
+    return; 
 }
 
 const std::string& Weapon::getType(void)

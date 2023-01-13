@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/12 10:50:16 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/12 15:49:56 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/13 14:35:59 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 class HumanB {
     private:
         std::string _name;
-        std::string _weapon;
+        Weapon* _weapon;
         
     public:
         HumanB(std::string name);
         ~HumanB(void);
         
         std::string getName(void);
-        std::string getWeapon(void);
-        void setWeapon(Weapon weapon);
+        Weapon* getWeapon(void);
+        void setWeapon(Weapon& weapon);
         void attack();
 };
 

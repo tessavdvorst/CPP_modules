@@ -6,20 +6,17 @@
 #    By: tvan-der <tvan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/10 12:43:46 by tvan-der      #+#    #+#                  #
-#    Updated: 2023/01/13 14:32:01 by tvan-der      ########   odam.nl          #
+#    Updated: 2023/01/13 16:39:31 by tvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 -include $(DEPS)
 
-NAME		= 		ex03
+NAME		= 		ex04
 CC			= 		c++
 CFLAGS		= 		-Wall -Werror -Wextra -std=c++98
 
-SRCS		= 		main.cpp \
-					HumanA.cpp \
-					HumanB.cpp \
-					Weapon.cpp
+SRCS		= 		main.cpp
 				
 OBJS_DIR 	= 		objs
 OBJS		= 		$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
