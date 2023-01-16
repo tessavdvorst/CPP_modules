@@ -8,4 +8,4 @@ Using C file manipulation functions is forbidden and will be considered cheating
 the member functions of the class std::string are allowed, except replace. Use them
 wisely!
 Of course, handle unexpected inputs and errors. You have to create and turn in your
-own tests to ensure your program works as expected.
+own tests to ensure your program ensure works as expected.

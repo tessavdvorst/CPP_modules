@@ -5,23 +5,20 @@
 /*                                                     +:+                    */
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/11 19:41:05 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/16 16:11:42 by Tessa         ########   odam.nl         */
+/*   Created: 2023/01/16 13:05:45 by Tessa         #+#    #+#                 */
+/*   Updated: 2023/01/16 13:45:28 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 
-int main(void)
+int main(int argc, char *argv[])
 {
-   int N = 5;
-   Zombie* zHorde;
-
-    zHorde = zombieHorde(N, "foo");
-
-    for (int i = 0; i < N; i++)
-        zHorde[i].announce();
-        
-    delete[] zHorde;
+    Harl harl;
+    
+    if (argc != 2)
+        std::cout << "Invalid parameter\n";
+    else
+        harl.complain(argv[1]);
     return (0);
 }

@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.cpp                                           :+:    :+:            */
+/*   sed.hpp                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/11 19:41:05 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/16 16:11:42 by Tessa         ########   odam.nl         */
+/*   Created: 2023/01/16 15:37:39 by Tessa         #+#    #+#                 */
+/*   Updated: 2023/01/16 15:58:18 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef SED_HPP
+# define SED_HPP
 
-int main(void)
-{
-   int N = 5;
-   Zombie* zHorde;
+#include <iostream>
+#include <fstream>
 
-    zHorde = zombieHorde(N, "foo");
+void copyAndReplaceLine(std::ofstream& file, std::string line, std::string oldStr, std::string newStr);
+void copyAndReplaceFile(std::string s1, std::string s2, std::string fileName, std::string newFileName);
 
-    for (int i = 0; i < N; i++)
-        zHorde[i].announce();
-        
-    delete[] zHorde;
-    return (0);
-}
+#endif

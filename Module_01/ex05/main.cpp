@@ -5,23 +5,21 @@
 /*                                                     +:+                    */
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/11 19:41:05 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/16 16:11:42 by Tessa         ########   odam.nl         */
+/*   Created: 2023/01/16 09:57:07 by Tessa         #+#    #+#                 */
+/*   Updated: 2023/01/16 11:30:17 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 
 int main(void)
 {
-   int N = 5;
-   Zombie* zHorde;
+    Harl harl;
 
-    zHorde = zombieHorde(N, "foo");
+    harl.complain("DEBUG");
+    harl.complain("INFO");
+    harl.complain("WARNING");
+    harl.complain("ERROR");
 
-    for (int i = 0; i < N; i++)
-        zHorde[i].announce();
-        
-    delete[] zHorde;
     return (0);
 }

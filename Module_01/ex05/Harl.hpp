@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.cpp                                           :+:    :+:            */
+/*   Harl.hpp                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/11 19:41:05 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/16 16:11:42 by Tessa         ########   odam.nl         */
+/*   Created: 2023/01/16 09:57:08 by Tessa         #+#    #+#                 */
+/*   Updated: 2023/01/16 12:57:27 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-int main(void)
-{
-   int N = 5;
-   Zombie* zHorde;
+#include <iostream>
 
-    zHorde = zombieHorde(N, "foo");
-
-    for (int i = 0; i < N; i++)
-        zHorde[i].announce();
+class Harl {
+    private:
+        typedef void (Harl::*funcPtr)();
         
-    delete[] zHorde;
-    return (0);
-}
+        void debug(void);
+        void info(void);
+        void warning(void);
+        void error(void);
+    
+    public:
+    Harl(void);
+    ~Harl(void);
+
+    void complain(std::string level);
+};
+
+#endif
