@@ -6,7 +6,7 @@
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/16 15:36:49 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/16 15:59:50 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/01/17 11:11:53 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,21 @@ void copyAndReplaceFile(std::string s1, std::string s2, std::string fileName, st
     if (!file)
         std::cerr << "Error: invalid file\n";
     else if (!newFile)
+    {
         std::cerr << "Error: cannot create file\n";
+        file.close();
+        return;
+    }
     else
     {
         if (s1.empty())
         {
-            std::cout << "Please insert string that needs to be replaced\n";
+            std::cerr << "Please insert string that needs to be replaced\n";
             return;
         }
         while (getline(file, line))
             copyAndReplaceLine(newFile, line, s1, s2);
+        file.close();
+        newFile.close();
     }
-    file.close();
-    newFile.close();
 }
