@@ -6,34 +6,11 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/18 11:56:17 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/18 16:15:49 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/18 21:14:14 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-
-// $> ./a.out
-// Default constructor called
-// Int constructor called
-// Float constructor called
-// Copy constructor called
-// Copy assignment operator called
-// Float constructor called
-// Copy assignment operator called
-// Destructor called
-// a is 1234.43
-// b is 10
-// c is 42.4219
-// d is 10
-// a is 1234 as integer
-// b is 10 as integer
-// c is 42 as integer
-// d is 10 as integer
-// Destructor called
-// Destructor called
-// Destructor called
-// Destructor called
-
 
 int main( void ) 
 {

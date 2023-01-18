@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/18 11:57:23 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/18 16:23:49 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/18 21:44:51 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int Fixed::getRawBits(void) const
 
 void Fixed::setRawBits(int raw)
 {
-    this->_val = raw;   
+    this->_val = raw;
 }
 
 std::ostream& operator<<(std::ostream& output, const Fixed &fixed)
