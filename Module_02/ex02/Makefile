@@ -6,18 +6,20 @@
 #    By: Tessa <Tessa@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 16:22:11 by Tessa         #+#    #+#                  #
-#    Updated: 2023/01/16 16:24:58 by Tessa         ########   odam.nl          #
+#    Updated: 2023/01/19 15:29:33 by tvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
-
--include $(DEPS)
 
 NAME		= 		ex02
 CC			= 		c++
 CFLAGS		= 		-Wall -Werror -Wextra -std=c++98
 
 SRCS		= 		main.cpp \
-					Fixed.cpp
+					Fixed.cpp \
+					ComparisonOperators.cpp \
+					ArithmeticOperators.cpp \
+					IncrementsDecrements.cpp \
+					MinMax.cpp
 				
 OBJS_DIR 	= 		objs
 OBJS		= 		$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
@@ -26,7 +28,7 @@ DEPS		= 		$(OBJS:.o=.d)
 all:				$(NAME)
 
 $(NAME):			$(OBJS)
-					@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+					@$(CC) $(CFLAGS) $(OBJS) -g -fsanitize=address -o $(NAME)
 					@echo "\033[0;32mCompilation completed!\033[0m"
 
 $(OBJS_DIR)/%.o:	%.cpp | $(OBJS_DIR)
@@ -46,3 +48,5 @@ fclean:
 re:					clean fclean all
 
 .PHONY:				all clean fclean re
+
+-include $(DEPS)

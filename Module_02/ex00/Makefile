@@ -6,11 +6,9 @@
 #    By: Tessa <Tessa@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 16:22:11 by Tessa         #+#    #+#                  #
-#    Updated: 2023/01/16 16:22:23 by Tessa         ########   odam.nl          #
+#    Updated: 2023/01/19 11:16:39 by tvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
-
--include $(DEPS)
 
 NAME		= 		ex00
 CC			= 		c++
@@ -46,3 +44,5 @@ fclean:
 re:					clean fclean all
 
 .PHONY:				all clean fclean re
+
+-include $(DEPS)

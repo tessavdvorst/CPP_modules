@@ -6,124 +6,50 @@
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/18 21:46:52 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/18 22:35:23 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/01/19 15:28:04 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <cmath>
 
+const int Fixed::_numOfFracBits = 8;
+
 Fixed::Fixed(): _val(0)
 {
-    // std::cout << "Default constructor called\n"; 
+    return;
 }
 
 Fixed::Fixed(const int val)
 {
-    // std::cout << "Int constructor called\n";
     setRawBits(val << _numOfFracBits);
     return;
 }
 
 Fixed::Fixed(const float val)
 {
-    // std::cout << "Float constructor called\n";
     setRawBits(roundf(val * (1 << _numOfFracBits)));
     return;
 }
 
-Fixed::Fixed(const Fixed& other) 
+Fixed::Fixed(const Fixed& fixedNum) 
 {
-    // std::cout << "Copy constructor called\n";
-    *this = other;
+    *this = fixedNum;
     return;
+}
+
+Fixed& Fixed::operator=(const Fixed& fixedNum)
+{ 
+    this->_val = fixedNum._val;
+    return (*this);
 }
 
 Fixed::~Fixed() 
 {
-    // std::cout << "Destructor called\n";
     return;
 }
 
-Fixed& Fixed::operator=(const Fixed other)
-{ 
-    // std::cout << "Copy assignment operator called\n";
-    this->_val = other._val;
-    return (*this);
-}
-
-bool Fixed::operator>(const Fixed other)
-{ 
-    if (this->_val > other.getRawBits())
-        return (true);
-    return (false);
-}
-
-bool Fixed::operator<(const Fixed other)
-{ 
-    if (this->_val < other.getRawBits())
-        return (true);
-    return (false);
-}
-
-bool Fixed::operator>=(const Fixed other)
-{
-    if (this->_val >= other.getRawBits())
-        return (true);
-    return (false);
-}
-
-bool Fixed::operator<=(const Fixed other)
-{ 
-    if (this->_val <= other.getRawBits())
-        return (true);
-    return (false);
-}
-
-bool Fixed::operator==(const Fixed other)
-{ 
-    if (this->_val == other.getRawBits())
-        return (true);
-    return (false);
-}
-
-bool Fixed::operator!=(const Fixed other)
-{ 
-    if (this->_val != other.getRawBits())
-        return (true);
-    return (false);
-}
-
-Fixed Fixed::operator+(const Fixed other)
-{
-    Fixed newFixedPoint;
-    newFixedPoint.setRawBits(this->_val + other.getRawBits());
-    return (newFixedPoint);
-}
-
-Fixed Fixed::operator-(const Fixed other)
-{
-    Fixed newFixedPoint;
-    newFixedPoint.setRawBits(this->_val - other.getRawBits());
-    return (newFixedPoint);
-}
-
-Fixed Fixed::operator*(const Fixed other)
-{
-    Fixed newFixedPoint;
-    newFixedPoint.setRawBits(this->_val * other.getRawBits());
-    std::cout << "this val = " << this->_val << std::endl; 
-    std::cout << "other val = " << other.getRawBits() << std::endl; 
-    std::cout << "multiplication = " << newFixedPoint.getRawBits() << std::endl; 
-    return (newFixedPoint);
-}
-
-Fixed Fixed::operator/(const Fixed other)
-{
-    Fixed newFixedPoint;
-    newFixedPoint.setRawBits(this->_val / other.getRawBits());
-    return (newFixedPoint);
-}
+// conversion functions
 
 float Fixed::toFloat(void) const
 {
@@ -137,6 +63,8 @@ int Fixed::toInt(void) const
     return (intNum);
 }
 
+// getter & setter
+
 int Fixed::getRawBits(void) const
 {
     return(this->_val);
@@ -147,30 +75,10 @@ void Fixed::setRawBits(int raw)
     this->_val = raw;
 }
 
-// Fixed& Fixed::min(Fixed& fixedPoint1, Fixed& fixedPoint2)
-// {
-    
-// }
-
-// Fixed& Fixed::min(const Fixed& fixedPoint1, const Fixed& fixedPoint2)
-// {
-
-// }
-
-// Fixed& Fixed::max(Fixed& fixedPoint1, Fixed& fixedPoint2)
-// {
-
-// }
-
-// Fixed& Fixed::max(const Fixed& fixedPoint1, const Fixed& fixedPoint2)
-// {
-
-// }
+// insertion operator
 
 std::ostream& operator<<(std::ostream& output, const Fixed &fixed)
 {
-    // output << fixed.toFloat();
-    output << fixed.toInt();
+    output << fixed.toFloat();
     return (output);
 }
-

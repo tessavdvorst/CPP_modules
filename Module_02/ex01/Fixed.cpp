@@ -6,12 +6,14 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/18 11:57:23 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/18 21:44:51 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/01/19 14:55:19 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <cmath>
+
+const int Fixed::_numOfFracBits = 8;
 
 Fixed::Fixed(): _val(0)
 {

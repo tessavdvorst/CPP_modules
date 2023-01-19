@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/18 11:56:36 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/18 22:14:13 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/01/19 14:27:48 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Fixed {
     private:
         int _val;
-        static const int _numOfFracBits = 8;
+        static const int _numOfFracBits;
         
     public:
         Fixed();
