@@ -6,42 +6,40 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/20 15:38:08 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/23 12:33:32 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/23 14:04:07 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void)
 {
-    ScavTrap scavTrap1;
-    ScavTrap scavTrap2("Martijn");
+    FragTrap fragTrap1;
+    ScavTrap scavTrap1("Martijn");
     ClapTrap clapTrap1("Haseeb");
-    scavTrap1 = ScavTrap("Tessa");
+    fragTrap1 = FragTrap("Tessa");
     std::cout << "\n";
+    std::cout << fragTrap1 << "\n";
     std::cout << scavTrap1 << "\n";
-    std::cout << scavTrap2 << "\n";
     std::cout << clapTrap1 << "\n";
-    scavTrap1.attack("Martijn");
-    scavTrap2.takeDamage(scavTrap1.getAttackDamage());
-    clapTrap1.attack("Tessa");
+    fragTrap1.attack("Martijn");
+    scavTrap1.takeDamage(fragTrap1.getAttackDamage());
+    clapTrap1.attack("Martijn");
     scavTrap1.takeDamage(clapTrap1.getAttackDamage());
     std::cout << "\n";
+    std::cout << fragTrap1 << "\n";
     std::cout << scavTrap1 << "\n";
-    std::cout << scavTrap2 << "\n";
     std::cout << clapTrap1 << "\n";
-    scavTrap2.attack("Haseeb");
-    clapTrap1.takeDamage(scavTrap2.getAttackDamage());
+    clapTrap1.setAttackDamage(40);
+    fragTrap1.attack("Martijn");
+    scavTrap1.takeDamage(fragTrap1.getAttackDamage());
+    clapTrap1.attack("Martijn");
+    scavTrap1.takeDamage(clapTrap1.getAttackDamage());
     std::cout << "\n";
-    std::cout << scavTrap2 << "\n";
-    std::cout << clapTrap1 << "\n";
-    clapTrap1.beRepaired(50);
-    std::cout << "\n";
-    std::cout << clapTrap1 << "\n";
-    scavTrap1.guardGate();
-    std::cout << "\n";
+    std::cout << fragTrap1 << "\n";
     std::cout << scavTrap1 << "\n";
-    std::cout << scavTrap2 << "\n";
     std::cout << clapTrap1 << "\n";
+    fragTrap1.highFivesGuys();
     return (0);
 }

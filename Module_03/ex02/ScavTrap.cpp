@@ -6,7 +6,7 @@
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/21 14:28:53 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/23 13:43:07 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/23 12:34:25 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 ScavTrap::ScavTrap(): ClapTrap()
 {
     std::cout << "ScavTrap default constructor called\n";
+    //name automatically set to empty string?
     setHitPoints(100);
     setEnergyPoints(50);
     setAttackDamage(20);

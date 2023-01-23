@@ -6,7 +6,7 @@
 #    By: Tessa <Tessa@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 16:22:11 by Tessa         #+#    #+#                  #
-#    Updated: 2023/01/20 17:11:58 by tvan-der      ########   odam.nl          #
+#    Updated: 2023/01/23 10:52:11 by tvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,7 @@ CC			= 		c++
 CFLAGS		= 		-Wall -Werror -Wextra -std=c++98
 
 SRCS		= 		main.cpp \
-					ClapTrap.cpp \
-					GetterSetter.cpp \
-					Actions.cpp
+					ClapTrap.cpp
 				
 OBJS_DIR 	= 		objs
 OBJS		= 		$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))

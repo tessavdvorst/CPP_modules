@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/20 13:54:39 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/20 16:37:15 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/23 12:15:37 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 class ClapTrap {
     private:
+        std::string _name;
         int _hitPoints;
         int _energyPoints;
         int _attackDamage;
-        std::string _name;
         
     public:
         ClapTrap();

@@ -6,7 +6,7 @@
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/21 13:44:37 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/23 11:40:18 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/23 16:26:41 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap
+class ScavTrap: virtual public ClapTrap
 {
     private:
         bool _gateKeeperMode;
@@ -28,10 +28,11 @@ class ScavTrap: public ClapTrap
 
         ScavTrap& operator=(const ScavTrap& scavTrap);
 
-        void setGateKeeperMode(bool mode);
         bool getGateKeeperMode(void) const;
         
         void attack(const std::string& target);
+        void takeDamage(unsigned int amount);
+        void beRepaired(unsigned int amount);
         void guardGate();
 };
 
