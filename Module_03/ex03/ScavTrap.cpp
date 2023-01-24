@@ -6,7 +6,7 @@
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/21 14:28:53 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/01/23 16:27:45 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/24 09:47:37 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,10 @@ bool ScavTrap::getGateKeeperMode(void) const
 
 void ScavTrap::attack(const std::string& target)
 {
-    int amountOfDamage = this->_hitPoints - this->_attackDamage;
-    
     if (this->_energyPoints > 0)
     {
        this->_energyPoints--;
-       std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << amountOfDamage << " points of damage but loses 1 energy point!\n";
+       std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage but loses 1 energy point!\n";
     }
     else
         std::cout << "ScavTrap " << this->_name << " has not enough energy points to attack\n";

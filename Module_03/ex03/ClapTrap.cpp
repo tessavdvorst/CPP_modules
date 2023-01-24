@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/20 15:00:10 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/23 16:17:50 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/24 15:27:40 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ ClapTrap::ClapTrap(std::string name, int hitpoints, int energypoints, int attack
     this->_hitPoints = hitpoints;
     this->_energyPoints = energypoints;
     this->_attackDamage = attackdamage;
+    std::cout << "ClapTrap custom constructor called\n";
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& clapTrap)

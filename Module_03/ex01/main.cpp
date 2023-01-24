@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/20 15:38:08 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/23 12:33:32 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/24 10:46:23 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int main(void)
 {
+    std::cout << "===========CREATION===========\n";
     ScavTrap scavTrap1;
     ScavTrap scavTrap2("Martijn");
     ClapTrap clapTrap1("Haseeb");
@@ -43,5 +44,6 @@ int main(void)
     std::cout << scavTrap1 << "\n";
     std::cout << scavTrap2 << "\n";
     std::cout << clapTrap1 << "\n";
+    std::cout << "===========DESTRUCTION===========\n";
     return (0);
 }
