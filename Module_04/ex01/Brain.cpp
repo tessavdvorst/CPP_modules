@@ -1,44 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.cpp                                            :+:    :+:            */
+/*   Brain.cpp                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/24 16:57:34 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/25 13:36:30 by tvan-der      ########   odam.nl         */
+/*   Created: 2023/01/25 12:17:09 by tvan-der      #+#    #+#                 */
+/*   Updated: 2023/01/25 14:03:22 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Brain.hpp"
 
-Cat::Cat(): Animal("Cat")
+Brain::Brain()
 {
-    std::cout << "Cat default constructor called\n";
+    std::cout << "Brain default constructor called\n";
     return;
 }
 
-Cat::Cat(const Cat& cat)
+Brain::Brain(const Brain& brain)
 {
-    std::cout << "Cat copy constructor called\n";
-    *this = cat;
+    std::cout << "Brain copy constructor called\n";
+    *this = brain;
     return;
 }
 
-Cat::~Cat()
+Brain::~Brain()
 {
-    std::cout << "Cat default destructor called\n";
+    std::cout << "Brain default destructor called\n";
     return;
 }
 
-Cat& Cat::operator=(const Cat& cat)
+Brain& Brain::operator=(const Brain& brain)
 {
-    this->_type = cat._type;
-    std::cout << "Cat copy assignment operator called\n";
+    for (int i = 0; i < 100; i++)
+        this->_ideas[i] = brain._ideas[i];
+    std::cout << "Brain copy assignment operator called\n";
     return (*this);
-}
-
-void Cat::makeSound(void) const
-{
-    std::cout << "Meow meow meow\n";
 }

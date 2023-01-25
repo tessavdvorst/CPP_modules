@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Dog.hpp                                            :+:    :+:            */
+/*   Brain.hpp                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/24 15:38:36 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/25 13:36:56 by tvan-der      ########   odam.nl         */
+/*   Created: 2023/01/25 12:17:11 by tvan-der      #+#    #+#                 */
+/*   Updated: 2023/01/25 15:37:42 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-#include "Animal.hpp"
+# include <iostream>
+# include <string>
 
-class Dog: public Animal
-{
+class Brain {
     public:
-        Dog();
-        Dog(const Dog& dog);
-        ~Dog();
+        Brain();
+        Brain(const Brain& Brain);
+        ~Brain();
         
-        Dog& operator=(const Dog& dog);
-
-        void makeSound(void) const;
+        Brain& operator=(const Brain& brain);
+        
+        std::string _ideas[100];
 };
 
 #endif
