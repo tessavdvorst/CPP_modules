@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/24 15:30:38 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/26 14:53:42 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/26 15:02:20 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ std::string copyTypeCheck(std::string s_original, std::string s_copy)
 int main()
 {
     std::cout << "================CREATION=================\n";
-    const Animal* aDog = new Dog();
+    // const AAnimal animal; //-----> not allowed!
+    // const AAnimal* animal = new Animal; //-----> not allowed!
+    const AAnimal* aDog = new Dog();
     std::cout << "*\n";
-    const Animal* aCat = new Cat();
+    const AAnimal* aCat = new Cat();
     std::cout << "*\n";
     const Cat* cat = new Cat();
     std::cout << "*\n";
@@ -39,7 +41,7 @@ int main()
     
     std::cout << "=============CREATION HORDE==============\n";
     int size = 4;
-    const Animal* animalHorde[size];
+    const AAnimal* animalHorde[size];
     for (int i = 0; i < size; i++)
     {
         if (i < 2)

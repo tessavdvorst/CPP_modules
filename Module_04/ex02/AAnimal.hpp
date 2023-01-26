@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   WrongCat.hpp                                       :+:    :+:            */
+/*   AAnimal.hpp                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/25 11:17:06 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/26 11:36:47 by tvan-der      ########   odam.nl         */
+/*   Created: 2023/01/24 15:29:38 by tvan-der      #+#    #+#                 */
+/*   Updated: 2023/01/26 14:58:25 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
-#include "WrongAnimal.hpp"
-#include "Brain.hpp"
+#include <iostream>
+#include <string>
 
-class WrongCat: public WrongAnimal
+class AAnimal
 {
-    private:
-        Brain* _attribute;
-        
-    public:
-        WrongCat();
-        WrongCat(const WrongCat& wrongCat);
-        ~WrongCat();
-        
-        WrongCat& operator=(const WrongCat& wrongCat);
+    protected:
+        std::string _type;
 
-        Brain* getBrain(void) const;
-        void makeSound(void) const;
+    public:
+        AAnimal();
+        AAnimal(const std::string& type);
+        AAnimal(const AAnimal& animal);
+        virtual ~AAnimal();
+        
+        AAnimal& operator=(const AAnimal& animal);
+
+        std::string getType(void) const;
+        virtual void makeSound(void) const = 0;
 };
 
 #endif

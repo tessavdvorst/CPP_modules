@@ -1,52 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.cpp                                            :+:    :+:            */
+/*   Dog.cpp                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/24 16:57:34 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/26 14:02:58 by tvan-der      ########   odam.nl         */
+/*   Created: 2023/01/24 16:58:40 by tvan-der      #+#    #+#                 */
+/*   Updated: 2023/01/26 15:00:09 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Dog.hpp"
 
-Cat::Cat(): Animal("Cat")
+Dog::Dog(): AAnimal("Dog")
 {
-    std::cout << "Cat default constructor called\n";
+    std::cout << "Dog default constructor called\n";
     this->_attribute = new Brain;
     return;
 }
 
-Cat::Cat(const Cat& cat)
+Dog::Dog(const Dog& dog)
 {
-    std::cout << "Cat copy constructor called\n";
-    *this = cat;
+    std::cout << "Dog copy constructor called\n";
+    *this = dog;
     return;
 }
 
-Cat::~Cat()
+Dog::~Dog()
 {
     delete this->_attribute;
-    std::cout << "Cat default destructor called\n";
+    std::cout << "Dog default destructor called\n";
     return;
 }
 
-Cat& Cat::operator=(const Cat& cat)
+Dog& Dog::operator=(const Dog& dog)
 {
-    std::cout << "Cat copy assignment operator called\n";
-    this->_type = cat._type;
-    this->_attribute = new Brain(*(cat.getBrain()));
+    std::cout << "Dat copy assignment operator called\n";
+    this->_type = dog._type;
+    this->_attribute = new Brain(*(dog.getBrain()));
     return (*this);
 }
 
-Brain* Cat::getBrain(void) const
+Brain* Dog::getBrain(void) const
 {
     return (this->_attribute);
 }
 
-void Cat::makeSound(void) const
+void Dog::makeSound(void) const
 {
-    std::cout << "Meow meow meow\n";
+    std::cout << "Whoof whoof whoof\n";
 }

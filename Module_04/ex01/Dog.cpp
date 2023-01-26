@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/24 16:58:40 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/25 15:45:07 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/26 14:23:54 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 Dog::Dog(): Animal("Dog")
 {
-    this->_attribute = new Brain;
     std::cout << "Dog default constructor called\n";
+    this->_attribute = new Brain;
     return;
 }
 
@@ -35,10 +35,15 @@ Dog::~Dog()
 
 Dog& Dog::operator=(const Dog& dog)
 {
+    std::cout << "Dat copy assignment operator called\n";
     this->_type = dog._type;
-    this->_attribute = new Brain;
-    std::cout << "Dog copy assignment operator called\n";
+    this->_attribute = new Brain(*(dog.getBrain()));
     return (*this);
+}
+
+Brain* Dog::getBrain(void) const
+{
+    return (this->_attribute);
 }
 
 void Dog::makeSound(void) const

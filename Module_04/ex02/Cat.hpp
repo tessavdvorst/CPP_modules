@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   WrongCat.hpp                                       :+:    :+:            */
+/*   Cat.hpp                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/25 11:17:06 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/26 11:36:47 by tvan-der      ########   odam.nl         */
+/*   Created: 2023/01/24 15:38:06 by tvan-der      #+#    #+#                 */
+/*   Updated: 2023/01/26 15:00:01 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-#include "WrongAnimal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class WrongCat: public WrongAnimal
+class Cat: public AAnimal
 {
     private:
         Brain* _attribute;
         
     public:
-        WrongCat();
-        WrongCat(const WrongCat& wrongCat);
-        ~WrongCat();
+        Cat();
+        Cat(const Cat& cat);
+        ~Cat();
         
-        WrongCat& operator=(const WrongCat& wrongCat);
+        Cat& operator=(const Cat& cat);
 
         Brain* getBrain(void) const;
         void makeSound(void) const;

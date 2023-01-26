@@ -1,35 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Dog.hpp                                            :+:    :+:            */
+/*   AMateria.cpp                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/24 15:38:36 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/26 14:23:43 by tvan-der      ########   odam.nl         */
+/*   Created: 2023/01/26 15:15:15 by tvan-der      #+#    #+#                 */
+/*   Updated: 2023/01/26 15:28:47 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#include "AMateria.hpp"
 
-#include "Animal.hpp"
-#include "Brain.hpp"
-
-class Dog: public Animal
+AMateria::AMateria()
 {
-    private:
-        Brain* _attribute;
     
-    public:
-        Dog();
-        Dog(const Dog& dog);
-        ~Dog();
-        
-        Dog& operator=(const Dog& dog);
+}
 
-        Brain* getBrain(void) const;
-        void makeSound(void) const;
-};
+AMateria::AMateria(std::string const & type)
+{
 
-#endif
+}
+
+AMateria::AMateria(const AMateria& materia)
+{
+    
+}
+
+AMateria::~AMateria()
+{
+    
+}
+
+&AMateria AMateria::operator=(const AMateria& materia)
+{
+    
+}
+
+std::string const & AMateria::getType() const
+{
+
+}
+
+AMateria* AMateria::clone() const
+{
+    
+}
+
+void AMateria::use(ICharacter& target)
+{
+    
+}

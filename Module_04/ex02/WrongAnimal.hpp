@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   WrongCat.hpp                                       :+:    :+:            */
+/*   WrongAnimal.hpp                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/25 11:17:06 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/26 11:36:47 by tvan-der      ########   odam.nl         */
+/*   Created: 2023/01/25 11:17:05 by tvan-der      #+#    #+#                 */
+/*   Updated: 2023/01/25 13:57:37 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-#include "WrongAnimal.hpp"
-#include "Brain.hpp"
+#include <iostream>
+#include <string>
 
-class WrongCat: public WrongAnimal
+class WrongAnimal
 {
-    private:
-        Brain* _attribute;
-        
-    public:
-        WrongCat();
-        WrongCat(const WrongCat& wrongCat);
-        ~WrongCat();
-        
-        WrongCat& operator=(const WrongCat& wrongCat);
+    protected:
+        std::string _type;
 
-        Brain* getBrain(void) const;
+    public:
+        WrongAnimal();
+        WrongAnimal(const std::string& type);
+        WrongAnimal(const WrongAnimal& wrongAnimal);
+        ~WrongAnimal();
+        
+        WrongAnimal& operator=(const WrongAnimal& wrongAnimal);
+
+        std::string getType(void) const;
         void makeSound(void) const;
 };
 
