@@ -5,20 +5,17 @@
 #                                                      +:+                     #
 #    By: tvan-der <tvan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2023/01/26 15:13:58 by tvan-der      #+#    #+#                  #
-#    Updated: 2023/01/26 15:14:34 by tvan-der      ########   odam.nl          #
+#    Created: 2023/01/27 11:26:39 by tvan-der      #+#    #+#                  #
+#    Updated: 2023/01/27 11:27:09 by tvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= 		ex03
+NAME		= 		ex00
 CC			= 		c++
 CFLAGS		= 		-Wall -Werror -Wextra -std=c++98
 
-SRCS		= 		AMateria.cpp \
-					Ice.cpp \
-					Cure.cpp \
-					Character.cpp \
-					MateriaSource.cpp
+SRCS		= 		main.cpp \
+					Bureaucrat.cpp
 				
 OBJS_DIR 	= 		objs
 OBJS		= 		$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
