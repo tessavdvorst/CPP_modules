@@ -6,7 +6,7 @@
 #    By: tvan-der <tvan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/27 11:26:39 by tvan-der      #+#    #+#                  #
-#    Updated: 2023/01/27 16:27:14 by tvan-der      ########   odam.nl          #
+#    Updated: 2023/01/29 17:21:00 by Tessa         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ CC			= 		c++
 CFLAGS		= 		-Wall -Werror -Wextra -std=c++98
 
 SRCS		= 		main.cpp \
-					Bureaucrat.cpp \
-					Form.cpp
+					Form.cpp \
+					Bureaucrat.cpp
 				
 OBJS_DIR 	= 		objs
 OBJS		= 		$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))

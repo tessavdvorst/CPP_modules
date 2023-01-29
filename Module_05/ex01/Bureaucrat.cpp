@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/27 11:27:18 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/27 19:18:33 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/29 17:21:41 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,19 @@ void Bureaucrat::decreaseGrade(void)
 		throw GradeTooLowException();
 	else
 		this->_grade++; 
+}
+
+void Bureaucrat::signForm(Form& form) const
+{
+    try
+    {
+        form.beSigned(*this);
+        std::cout << this->_name << " signed " << form.getName() << "\n";
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << this->_name << " couldn't sign " << form.getName() << " because " << e.what() << '\n';
+    }
 }
 
 std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureaucrat)

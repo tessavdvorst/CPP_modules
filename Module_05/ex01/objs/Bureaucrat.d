@@ -1,1 +1,1 @@
-objs/Bureaucrat.o: Bureaucrat.cpp Bureaucrat.hpp
+objs/Bureaucrat.o: Bureaucrat.cpp Bureaucrat.hpp Form.hpp
