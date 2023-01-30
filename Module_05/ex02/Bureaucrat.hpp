@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/27 11:27:20 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/30 11:13:38 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/30 15:34:52 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <string>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
     private:
@@ -45,7 +45,8 @@ class Bureaucrat {
         int getGrade(void) const;
         void increaseGrade(void);
         void decreaseGrade(void);
-        void signForm(Form& form) const;
+        void signForm(AForm& form) const;
+        void executeForm(AForm& form) const;
 };
 
 std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureaucrat);

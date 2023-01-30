@@ -6,11 +6,11 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/27 11:27:18 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/30 11:10:54 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/30 16:04:01 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() {}
@@ -64,7 +64,7 @@ void Bureaucrat::decreaseGrade(void)
 		this->_grade++; 
 }
 
-void Bureaucrat::signForm(Form& form) const
+void Bureaucrat::signForm(AForm& form) const
 {
     try
     {
@@ -75,6 +75,14 @@ void Bureaucrat::signForm(Form& form) const
     {
         std::cout << this->_name << " couldn't sign " << form.getName() << " because " << e.what() << '\n';
     }
+}
+
+void Bureaucrat::executeForm(AForm& form) const
+{
+    if (form.execute(*this))
+        std::cout << this->_name << " executed " << form.getName() << "\n";
+    else
+        std::cout << this->_name << " couldn't execute " << form.getName() << '\n';
 }
 
 std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureaucrat)

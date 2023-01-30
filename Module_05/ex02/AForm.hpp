@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Form.hpp                                           :+:    :+:            */
+/*   AForm.hpp                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/27 16:28:36 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/30 11:10:25 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/30 15:34:59 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 #include "iostream"
 #include "string"
 
 class Bureaucrat;
 
-class Form {
+class AForm {
     private:
         bool _isSigned;
         const int _signGrade;
         const int _excGrade;
         const std::string _name;
-        Form();
+        AForm();
 
     public:
-        Form(int signGrade, int excGrade, std::string name);
-        Form(const Form& form);
-        ~Form();
+        AForm(int signGrade, int excGrade, std::string name);
+        AForm(const AForm& form);
+        virtual ~AForm();
 
-        Form& operator=(const Form& form);
+        AForm& operator=(const AForm& form);
 
         class GradeTooHighException: public std::exception {
             public:
@@ -42,6 +42,11 @@ class Form {
             public:
                 const char* what() const throw() {return "grade too low";};
         };
+        
+        class FormNotSignedException: public std::exception {
+            public:
+                const char* what() const throw() {return "form not signed";};
+        };
 
         bool getIsSigned(void) const;
         int getSignGrade(void) const;
@@ -49,8 +54,10 @@ class Form {
         std::string getName(void) const;
 
         void beSigned(const Bureaucrat& bureaucrat);
+        void executeCheck(const Bureaucrat& bureaucrat) const;
+        virtual bool execute(Bureaucrat const & executor) const = 0; //pure virtual
 };
 
-std::ostream& operator<<(std::ostream& output, const Form& form);
+std::ostream& operator<<(std::ostream& output, const AForm& form);
 
 #endif
