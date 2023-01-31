@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/27 11:27:17 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/30 16:43:45 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/01/31 11:40:52 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int main(void)
     std::cout << " ---------------------------------- \n\n";
     
     PresidentialPardonForm pForm("Nicky");
-    Bureaucrat justin("Justin", 2);
+    Bureaucrat justin("Justin", 5);
     std::cout << justin << "\n";
     std::cout << pForm << "\n";
     justin.signForm(pForm);
@@ -105,15 +105,20 @@ int main(void)
     std::cout << "|  INVALID ROBOTOMY REQUEST FORM  |\n";
     std::cout << " --------------------------------- \n\n";
     
-    RobotomyRequestForm rFormInvalid("Cat");
-    Bureaucrat kawish("Kawish", 0);
-    std::cout << kawish << "\n";
-    std::cout << rFormInvalid << "\n";
-    kawish.signForm(rFormInvalid);
-    std::cout << "\n";
-    std::cout << rFormInvalid << "\n";
-    kawish.executeForm(rFormInvalid);
-    std::cout << "\n";
+    try
+    {
+        RobotomyRequestForm rFormInvalid("Cat");
+        Bureaucrat kawish("Kawish", 0);
+        std::cout << kawish << "\n";
+        std::cout << rFormInvalid << "\n";
+        kawish.signForm(rFormInvalid);
+        std::cout << "\n";
+        std::cout << rFormInvalid << "\n";
+        kawish.executeForm(rFormInvalid);
+        std::cout << "\n";
+    } catch (const std::exception& e) {
+        std::cerr << "Exception: " << e.what() << "\n";
+    }   
 
     return (0);
 }
