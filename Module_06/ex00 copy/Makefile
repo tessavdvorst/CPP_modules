@@ -6,7 +6,7 @@
 #    By: tvan-der <tvan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/31 12:14:52 by tvan-der      #+#    #+#                  #
-#    Updated: 2023/02/01 15:30:02 by tvan-der      ########   odam.nl          #
+#    Updated: 2023/02/01 17:10:57 by Tessa         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC			= 		c++
 CFLAGS		= 		-Wall -Werror -Wextra -std=c++98 -pedantic
 
 SRCS		= 		main.cpp \
-					Literal.cpp \
+					ALiteral.cpp \
 					CharLiteral.cpp
 				
 OBJS_DIR 	= 		objs

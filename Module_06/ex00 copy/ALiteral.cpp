@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Literal.cpp                                        :+:    :+:            */
+/*   ALiteral.cpp                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 12:15:11 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/02/01 10:42:29 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/01 19:18:39 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,25 @@
 // the user that the type conversion is impossible. Include any header you need in order to
 // handle numeric limits and special values
 
-#include "Literal.hpp"
+#include "ALiteral.hpp"
 
-Literal::Literal() {}
+ALiteral::ALiteral(const std::string input): _input(input) {}
 
-Literal::Literal(const std::string& input): _input(input) {}
+ALiteral::ALiteral(const ALiteral& other):
+{
 
-Literal::Literal(const Literal& other): _input(other._input)
+    
+}
+
+ALiteral::~ALiteral() {}
+
+
+ALiteral& ALiteral::operator=(const ALiteral& other)
 {
     *this = other;
 }
 
-Literal::~Literal() {}
-
-Literal& Literal::operator=(const Literal& other)
-{
-    this->_type = other._type;
-    return (*this);   
-}
-
-bool Literal::setType(void)
+bool ALiteral::setType(void)
 {
     if (this->isChar())
         this->_type = CHAR;
@@ -62,7 +61,7 @@ bool Literal::setType(void)
     return (true);
 }
 
-void Literal::displayConversion(void)
+void ALiteral::displayConversion(void)
 {
     std::cout << "char: " << this->toChar() << "\n";
     std::cout << "int: " << this->toInt() << "\n";
@@ -70,7 +69,7 @@ void Literal::displayConversion(void)
     // std::cout << "double: " << this->toDouble() << "\n";
 }
 
-void Literal::convert(void)
+void ALiteral::convert(void)
 {
     if (!this->setType())
         return ;
@@ -78,40 +77,9 @@ void Literal::convert(void)
     
 }
 
-bool Literal::isChar(void)
-{
-    if (this->_input.length() != 1)
-        return (false);
-    if (!std::isprint(this->_input[0]))
-    {
-        this->_cState = NO_DISPLAY;
-        return (false);
-    }
-    return (true);
-}
 
-//check min & max & negative values
-bool Literal::isInt(void)
-{
-    for (int i = 0; i < (int)this->_input.length(); i++)
-    {
-        if (std::isdigit(this->_input[i]) == 0)
-            return (false);
-    }
-    return (true);
-}
 
-// bool Literal::isDouble(void)
-// {
-
-// }
-
-// bool Literal::isFloat(void)
-// {
-    
-// }
-
-void Literal::toActualType(void)
+void ALiteral::toActualType(void)
 {
     switch (this->_type)
     {
@@ -134,15 +102,15 @@ void Literal::toActualType(void)
     }
 }
 
-char Literal::toChar(void)
+char ALiteral::toChar(void)
 {
 
 }
 
-int Literal::toInt(void)
+int ALiteral::toInt(void)
 {
     
 }
-// double Literal::toDouble(void);
-// float Literal::toFloat(void);
+// double ALiteral::toDouble(void);
+// float ALiteral::toFloat(void);
 

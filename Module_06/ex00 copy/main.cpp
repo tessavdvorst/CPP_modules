@@ -6,11 +6,12 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 12:15:10 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/02/01 10:34:23 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/01 19:33:44 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Literal.hpp"
+#include "convert.hpp"
+#include "CharLiteral.hpp"
 
 // ./convert 0
 // char: Non displayable
@@ -41,8 +42,16 @@ int main(int argc, char *argv[])
         return (1);
     }
     
-    Literal lit(argv[1]);
-    lit.convert();
-    
+    try {
+        LitType type = findType(argv[1]);
+        ALiteral* lit = newLiteral(type, argv[1]);
+        if (lit)
+        {
+            lit->displayConversions();
+            delete lit;
+        }
+    } catch (const std::exception& e) {
+        std::cout << e.what();
+    }
     return (0);
 }
