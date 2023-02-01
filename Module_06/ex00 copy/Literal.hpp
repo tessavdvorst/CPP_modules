@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 12:15:13 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/02/01 10:28:21 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/01 15:41:46 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ class Literal {
         void    displayConversion(void);
         
     public:
-        Literal(const std::string& input);
+        Literal(const std::string input);
         Literal(const Literal& other);
         ~Literal();
 

@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/27 11:27:20 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/27 16:26:01 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/01 09:48:32 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ class Bureaucrat {
 };
 
 std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureaucrat);
+
 #endif
