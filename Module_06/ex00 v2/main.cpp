@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 12:15:10 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/02/01 19:33:44 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/02/02 18:52:14 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ int main(int argc, char *argv[])
         ALiteral* lit = newLiteral(type, argv[1]);
         if (lit)
         {
-            lit->displayConversions();
+            lit->displayAllConversions(type);
             delete lit;
         }
     } catch (const std::exception& e) {
         std::cout << e.what();
     }
+    system ("leaks a.out");
     return (0);
 }

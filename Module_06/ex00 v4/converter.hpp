@@ -1,47 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   convert.hpp                                        :+:    :+:            */
+/*   converter.hpp                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/01 16:59:05 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/02/01 18:04:59 by Tessa         ########   odam.nl         */
+/*   Created: 2023/02/02 20:20:32 by Tessa         #+#    #+#                 */
+/*   Updated: 2023/02/02 21:42:57 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_HPP
-# define CONVERT_HPP
+#ifndef CONVERTER_HPP
+# define CONVERTER_HPP
 
 #include <iostream>
 #include <string>
-
-class ALiteral;
+#include <iomanip>
+#include <limits.h>
+#include <float.h>
+#include <math.h>
 
 enum LitType {
     CHAR,
     INT,
-    DOUBLE,
-    FLOAT
+    FLOAT,
+    DOUBLE
 };
 
-enum ConversionState {
-    SET,
-    IMPOS,
-    NO_DISPLAY
-};
-
-class InvalidLiteralException: public std::exception {
+class InvalidTypeException: public std::exception {
     public:
         const char* what() const throw();
 };
 
-LitType	findType(std::string input);
-bool	isChar(std::string input);
-bool	isInt(void);
-// bool	isDouble(void);
-// bool	isFloat(void);
+class OverflowException: public std::exception {
+    public:
+        const char* what() const throw();
+};
 
-ALiteral* newLiteral(LitType type, const std::string input);
-
+void convertFromType(char* input);
+void convertFromChar(char c);
+void convertFromInt(long int i);
+void convertFromFloat(double f);
+void convertFromDouble(double d);
 #endif

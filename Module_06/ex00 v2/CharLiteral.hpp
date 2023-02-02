@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/01 15:26:42 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/02/01 19:27:19 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/02/02 18:49:52 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 class CharLiteral: public ALiteral {
       private:
-        const char      _c;
-        ConversionState _cState;
+        char      _c;
+        ConversionState _state;
         
         CharLiteral();
         CharLiteral(const CharLiteral& other);
@@ -28,8 +28,10 @@ class CharLiteral: public ALiteral {
       public:
         CharLiteral(const std::string input);
         ~CharLiteral();
-      
-        void convert(void);
+        
+        void    toChar(void);
+        // int     toInt(void);
+        void toActualType(void);
 };
 
 #endif

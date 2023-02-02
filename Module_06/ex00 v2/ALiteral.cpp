@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 12:15:11 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/02/01 19:18:39 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/02/02 18:54:27 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,88 +29,30 @@
 
 ALiteral::ALiteral(const std::string input): _input(input) {}
 
-ALiteral::ALiteral(const ALiteral& other):
-{
-
-    
-}
-
 ALiteral::~ALiteral() {}
 
+/*
+    WHEN DO I NEED CONVERSION?
+    - when initializing TypeLiteral object 
+        -----> (ALiteral:: string input -> TypeLiteral:: type value)
+    - converting to other Types 
+        -----> (TypeLiteral:: type value -> other literals)
+*/
 
-ALiteral& ALiteral::operator=(const ALiteral& other)
-{
-    *this = other;
-}
 
-bool ALiteral::setType(void)
-{
-    if (this->isChar())
-        this->_type = CHAR;
-    else if (this->isInt())
-        this->_type = INT;
-    // else if (this->isFloat())
-    //     this->_type = FLOAT;
-    // else if (this->isDouble())
-    //     this->_type = DOUBLE;
-    else
-    {
-        std::cerr << "Error: conversion failed\n";
-        return (false);
-    }
-    return (true);
-}
+// int ALiteral::toInt(void)
+// {
+    
+// }
+// double ALiteral::toDouble(void);
+// float ALiteral::toFloat(void);
 
-void ALiteral::displayConversion(void)
+void ALiteral::displayAllConversions(LitType type)
 {
-    std::cout << "char: " << this->toChar() << "\n";
-    std::cout << "int: " << this->toInt() << "\n";
+    this->toChar();
+    // std::cout << "char: " << this->toChar() << "\n";
+    // std::cout << "int: " << this->toInt() << "\n";
     // std::cout << "float: " << this->toFloat() << "\n";
     // std::cout << "double: " << this->toDouble() << "\n";
 }
-
-void ALiteral::convert(void)
-{
-    if (!this->setType())
-        return ;
-    this->toActualType();
-    
-}
-
-
-
-void ALiteral::toActualType(void)
-{
-    switch (this->_type)
-    {
-        case CHAR:
-            this->_c = this->toChar();
-            this->_cState = SET;
-            break;
-        case INT:
-            this->_i = this->toInt();
-            this->_iState = SET; 
-            break;
-        // case FLOAT:
-        //     this->_f = this->toFloat();
-        //     break;
-        // case DOUBLE:
-        //     this->_d = this->toDouble();
-        //     break;
-        default:
-            break;
-    }
-}
-
-char ALiteral::toChar(void)
-{
-
-}
-
-int ALiteral::toInt(void)
-{
-    
-}
-// double ALiteral::toDouble(void);
-// float ALiteral::toFloat(void);
 
