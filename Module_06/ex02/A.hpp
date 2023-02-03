@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 12:08:23 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/31 12:10:15 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/03 16:29:15 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 #include "Base.hpp"
 
-class A: public Base {
-    
-};
+class A: public Base {};
 
 #endif

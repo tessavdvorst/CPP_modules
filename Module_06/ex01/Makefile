@@ -5,21 +5,18 @@
 #                                                      +:+                     #
 #    By: tvan-der <tvan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2023/01/31 12:05:40 by tvan-der      #+#    #+#                  #
-#    Updated: 2023/02/03 16:31:36 by tvan-der      ########   odam.nl          #
+#    Created: 2023/02/03 14:29:57 by tvan-der      #+#    #+#                  #
+#    Updated: 2023/02/03 15:17:35 by tvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= 		ex02
+NAME		= 		ex01
 CC			= 		c++
-# CFLAGS		= 		-Wall -Werror -Wextra -std=c++98 -pedantic
+CFLAGS		= 		-Wall -Werror -Wextra -std=c++98 -pedantic
 
-SRCS		= 		main.cpp \
-					Base.cpp \
-					A.cpp \
-					B.cpp \
-					C.cpp \
-					identify.cpp
+SRCS		=		Data.cpp \
+ 					main.cpp \
+					serialize.cpp
 				
 OBJS_DIR 	= 		objs
 OBJS		= 		$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))

@@ -6,7 +6,7 @@
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/02 20:20:32 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/02/02 21:42:57 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/02/03 12:23:46 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,4 @@ class OverflowException: public std::exception {
 };
 
 void convertFromType(char* input);
-void convertFromChar(char c);
-void convertFromInt(long int i);
-void convertFromFloat(double f);
-void convertFromDouble(double d);
 #endif

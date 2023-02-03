@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Base.hpp                                           :+:    :+:            */
+/*   serialize.cpp                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/01/31 12:06:00 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/02/03 15:53:49 by tvan-der      ########   odam.nl         */
+/*   Created: 2023/02/03 14:35:41 by tvan-der      #+#    #+#                 */
+/*   Updated: 2023/02/03 15:40:19 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-# define BASE_HPP
+#include "serialize.hpp"
 
-#include <iostream>
-#include <string>
+uintptr_t serialize(Data* ptr)
+{
+    uintptr_t i = reinterpret_cast<uintptr_t>(ptr);
+    return (i);
+}
 
-class Base {
-    public:
-        virtual ~Base();
-};
-
-#endif
+Data* deserialize(uintptr_t raw)
+{
+    Data* data = reinterpret_cast<Data*>(raw);
+    return (data);
+}
