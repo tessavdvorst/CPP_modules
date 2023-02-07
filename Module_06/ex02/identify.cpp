@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/03 15:43:42 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/02/03 17:27:41 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/07 11:01:38 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,15 @@ void identify(Base* p)
 void identify(Base& p)
 {
     try {
-        A& a = dynamic_cast<A&>(p);
+        A a = dynamic_cast<A&>(p);
         std::cout << "&p = A\n";
     } catch (std::bad_cast &bc) {} 
     try {
-        B& b = dynamic_cast<B&>(p);
+        B b = dynamic_cast<B&>(p);
         std::cout << "&p = B\n";
     } catch (std::bad_cast &bc) {} 
     try {
-        C& c = dynamic_cast<C&>(p);
+        C c = dynamic_cast<C&>(p);
         std::cout << "&p = C\n";
     } catch (std::bad_cast &bc) {} 
 }
