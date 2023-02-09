@@ -6,13 +6,13 @@
 #    By: Tessa <Tessa@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/02/07 20:20:19 by Tessa         #+#    #+#                  #
-#    Updated: 2023/02/07 20:20:25 by Tessa         ########   odam.nl          #
+#    Updated: 2023/02/09 13:59:06 by tvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= 		ex00
 CC			= 		c++
-CFLAGS		= 		-Wall -Werror -Wextra -std=c++98 -pedantic
+CFLAGS		= 		-Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
 
 SRCS		= 		main.cpp
 
