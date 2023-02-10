@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/24 15:30:38 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/26 14:53:42 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/10 15:09:28 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,10 @@ int main()
     delete aCat;
     std::cout << "*\n";
     delete cat;
+    std::cout << "*\n";
+    delete catCopy;
+    std::cout << "*\n";
+    delete wrongCatCopy;
     std::cout << "*\n";
     delete wrongCat;
     std::cout << "\n";

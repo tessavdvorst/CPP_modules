@@ -6,13 +6,13 @@
 #    By: tvan-der <tvan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/24 15:29:15 by tvan-der      #+#    #+#                  #
-#    Updated: 2023/01/26 14:46:56 by tvan-der      ########   odam.nl          #
+#    Updated: 2023/02/10 15:02:36 by tvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= 		ex01
 CC			= 		c++
-CFLAGS		= 		-Wall -Werror -Wextra -std=c++98
+CFLAGS		= 		-Wall -Werror -Wextra -std=c++98 -g -fsanitize=address
 
 SRCS		= 		Cat.cpp \
 					Animal.cpp \

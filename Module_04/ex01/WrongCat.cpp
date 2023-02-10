@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/25 11:56:30 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/26 14:02:23 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/10 15:04:26 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ WrongCat::~WrongCat()
 WrongCat& WrongCat::operator=(const WrongCat& wrongCat)
 {
     this->_type = wrongCat._type;
+    Brain* tempBrain = this->_attribute;
     this->_attribute = wrongCat._attribute;
+    delete tempBrain;
     std::cout << "WrongCat copy assignment operator called\n";
     return (*this);
 }

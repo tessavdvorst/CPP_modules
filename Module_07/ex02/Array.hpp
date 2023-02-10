@@ -6,7 +6,7 @@
 /*   By: Tessa <Tessa@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/05 16:52:40 by Tessa         #+#    #+#                 */
-/*   Updated: 2023/02/07 15:45:21 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/10 11:50:22 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Array {
             *this = other;
         };
         ~Array() {
-            delete[] this->_arr;
+            delete this->_arr;
         };
 
         Array& operator=(const Array& other) {

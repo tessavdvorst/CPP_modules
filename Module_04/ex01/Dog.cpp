@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/24 16:58:40 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/26 14:23:54 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/10 11:55:26 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ Dog& Dog::operator=(const Dog& dog)
 {
     std::cout << "Dat copy assignment operator called\n";
     this->_type = dog._type;
+    delete this->_attribute;
     this->_attribute = new Brain(*(dog.getBrain()));
     return (*this);
 }

@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/24 16:57:34 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/01/26 14:02:58 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/10 15:10:55 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ Cat& Cat::operator=(const Cat& cat)
 {
     std::cout << "Cat copy assignment operator called\n";
     this->_type = cat._type;
+    Brain* tempBrain = this->_attribute;
     this->_attribute = new Brain(*(cat.getBrain()));
+    delete tempBrain;
     return (*this);
 }
 
