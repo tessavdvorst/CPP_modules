@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 11:02:50 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/02/10 11:39:21 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/13 11:37:11 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int main(void)
 {
-    const int num = 10;
+    const int num = 1;
     
     std::cout << " ---------------------------------- \n";
     std::cout << "|              VECTOR              |\n";

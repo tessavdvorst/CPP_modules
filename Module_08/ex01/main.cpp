@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 10:35:45 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/02/10 16:39:24 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/13 11:38:36 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main(void)
     {
         int N = 10000;
         Span span(N);
-        // srand(time(NULL));
+        srand(time(NULL));
         for (int i = 0; i < N; i++)
             span.addNumber(rand() % 10000);
         std::cout << "span contains: ";
