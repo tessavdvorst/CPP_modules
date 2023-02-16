@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 10:35:47 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/02/10 15:40:45 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/02/16 12:18:29 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,19 @@ void Span::addNumber(int num)
 
 unsigned int Span::shortestSpan(void)
 {
-    if (this->_intVec.size() <= 1)
+    unsigned int shortestSpan;
+    int size = static_cast<int>(this->_intVec.size());
+    
+    if (size <= 1)
         throw NoSpanFoundException();
     std::sort(this->_intVec.begin(), this->_intVec.end());
-    return (this->_intVec[1] - this->_intVec[0]);
+    shortestSpan = this->_intVec[size - 1];
+    for (int i = 0; i + 1 < size; i++)
+    {
+        if (shortestSpan > static_cast<unsigned int>(this->_intVec[i + 1] - this->_intVec[i]))
+            shortestSpan = this->_intVec[i + 1] - this->_intVec[i];
+    }
+    return (shortestSpan);
 }
 
 unsigned int Span::longestSpan(void)
