@@ -5,24 +5,24 @@
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/15 14:30:30 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/03/20 13:28:48 by tvan-der      ########   odam.nl         */
+/*   Created: 2023/03/20 13:35:28 by tvan-der      #+#    #+#                 */
+/*   Updated: 2023/03/20 16:09:55 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	if (argc != 2)
-		std::cerr << "Error: could not open file.\n";
+		std::cout << "Error: invalid amount of arguments\n";
 	else
 	{
+		RPN rpn(argv[1]);
 		try {
-			BTC btc(argv[1]);
-			btc.load_file();
+			rpn.calculate();
 		} catch (const std::exception &e) {
-			std::cerr << "Error: " << e.what() << ".\n";
+			std::cout << "Error: " << e.what() << '\n';
 		}
 	}
 	return (0);
