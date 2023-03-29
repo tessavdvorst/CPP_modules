@@ -6,7 +6,7 @@
 #    By: tvan-der <tvan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/27 11:26:39 by tvan-der      #+#    #+#                  #
-#    Updated: 2023/03/20 16:11:40 by tvan-der      ########   odam.nl          #
+#    Updated: 2023/03/29 14:32:47 by tvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ CC			= 		c++
 CFLAGS		= 		-Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
 
 SRCS		= 		main.cpp \
-					PmergeMe.cpp
+					PmergeMe.cpp \
+					IntList.cpp
 
 OBJS_DIR 	= 		objs
 OBJS		= 		$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))

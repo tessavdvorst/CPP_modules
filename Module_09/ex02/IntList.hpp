@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   PmergeMe.hpp                                       :+:    :+:            */
+/*   IntList.hpp                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/20 16:12:05 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/03/29 14:53:09 by tvan-der      ########   odam.nl         */
+/*   Created: 2023/03/22 10:36:21 by tvan-der      #+#    #+#                 */
+/*   Updated: 2023/03/29 15:06:25 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PMERGEME_HPP
-# define PMERGEME_HPP
+#ifndef INTLIST_HPP
+# define INTLIST_HPP
 
-#include <iostream>
-#include "IntDeque.hpp"
-#include "IntList.hpp"
+#include <list>
 
-bool check_duplicates(char **input, int size);
-int convert_to_int(char *input);
-void store_args(int argc, char **argv, IntList *l);//, MyDeque<int> *d);
-// void sort_containers(int count, MyList *l);//, MyDeque<int> *d);
-// void print_time(int count, std::string container_type, long time);
+class IntList: public std::list<int> {
+	private:
+		long _time_to_sort;
+		
+	public:
+		IntList();
+		IntList(const IntList& other);
+		~IntList();
+		
+		IntList& operator=(const IntList& other);
+
+		// void sort(void);
+		void print(void);
+		bool has_duplicate(void);
+		// long get_sorting_time(void);
+};
 
 #endif

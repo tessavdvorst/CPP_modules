@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/20 16:12:01 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/03/20 16:15:23 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/03/29 15:26:34 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,27 @@
 // $> ./PmergeMe `jot -r 3000 1 100000 | tr '\n' ' '`
 // [...]
 
-int main(int argv, char argv[])
+int main(int argc, char *argv[])
 {
+	if (argc == 1)
+		std::cout << "Error: nothing to be sorted\n";
+	else
+	{
+		// IntDeque d;
+		IntList l;
+		try {
+			store_args(argc, argv, &l);//, &d);
+			std::cout << "Before: ";
+			l.print();
+			l.sort();
+			// d.sort();
+			// std::cout << "After: ";
+			// l.print();
+			// print_time(argc - 1, "list", l.get_sorting_time());
+			// print_time(argc - 1, "deque", d.get_sorting_time());
+		} catch (const std::exception &e) {
+			std::cout << "Error: " << e.what() << '\n';
+		}
+	}
 	return (0);
 }
