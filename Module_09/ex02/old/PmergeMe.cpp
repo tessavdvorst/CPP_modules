@@ -5,12 +5,25 @@
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/30 15:24:47 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/03/30 17:23:11 by tvan-der      ########   odam.nl         */
+/*   Created: 2023/03/20 16:12:03 by tvan-der      #+#    #+#                 */
+/*   Updated: 2023/03/29 15:26:18 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+// Here are some additional guidelines on the information you should display line by line
+// on the standard output
+// • On the first line you must display an explicit text followed by the unsorted positive
+// integer sequence.
+// • On the second line you must display an explicit text followed by the sorted positive
+// integer sequence.
+// • On the third line you must display an explicit text indicating the time used by
+// your algorithm by specifying the first container used to sort the positive integer
+// sequence.
+// • On the last line you must display an explicit text indicating the time used by
+// your algorithm by specifying the second container used to sort the positive integer
+// sequence.
 
 int convert_to_int(char *input)
 {
@@ -24,17 +37,15 @@ int convert_to_int(char *input)
 	return (i);
 }
 
-void store_args(int argc, char **argv, std::list<int> *l, std::deque<int> *d)
+void store_args(int argc, char **argv, IntList *l)//, IntDeque *d)
 {
 	for (int i = 1; i < argc; i++)
 	{
 		int val = convert_to_int(argv[i]);
-		if (val < 0)
-			throw std::runtime_error("negative value");
-		l->push_back(val);
-		d->push_back(val);
+		l->insert(l->end(), val);
+		// d->insert(val);
 	}
-	if (check_duplicate(*l) || check_duplicate(*d))
+	if (l->has_duplicate())
 		throw std::runtime_error("duplicate");
 }
 

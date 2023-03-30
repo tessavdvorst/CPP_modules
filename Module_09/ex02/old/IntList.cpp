@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 14:33:38 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/03/29 15:27:25 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/03/30 15:17:54 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,19 @@ IntList& IntList::operator=(const IntList& other)
 	return (*this);
 }
 
-// void IntList::sort(void)
-// {
-
-// }
+// void IntList::merge_sort(void);
+// void IntList::insert_sort(void);
+void IntList::merge_insert_sort(void)
+{
+	if (this->size() - 1 > K)
+	{
+		merge_insert_sort();
+		merge_insert_sort();
+		merge_sort();
+	}
+	else
+		insert_sort();
+}
 
 void IntList::print(void)
 {
