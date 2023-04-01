@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:24:47 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/03/30 17:23:11 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/04/01 19:09:40 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,3 @@ void store_args(int argc, char **argv, std::list<int> *l, std::deque<int> *d)
 	if (check_duplicate(*l) || check_duplicate(*d))
 		throw std::runtime_error("duplicate");
 }
-
-// void print_time(int count, std::string container_type, long time)
-// {
-// 	std::cout << "Time to process a range of " << count << " elements ";
-// 	std::cout << "with std::" << container_type;
-// 	std::cout << " : " << time << " us\n";
-// }
