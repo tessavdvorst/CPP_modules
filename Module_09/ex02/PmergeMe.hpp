@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/20 16:12:05 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/04/01 19:35:05 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/04/23 22:52:50 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PMERGEME_HPP
 
 #include <iostream>
+#include <iomanip>
 #include <exception>
 #include <sys/time.h>
 #include <list>
@@ -57,6 +58,7 @@ void fill(T container, T* new_container, int start, int end)
 template <typename T>
 void insert_sort(T* container) 
 {
+	std::cout << "insert:";
 	typename T::iterator it = container->begin();
 	for (; it != container->end(); ++it)
 	{
@@ -81,6 +83,7 @@ void merge_sort(T* container, int p, int q, int r)
 	T left;
 	T right;
 	
+	std::cout << "merged:";
 	fill(*container, &left, p, q);
 	fill(*container, &right, q + 1, r);
 	
@@ -123,16 +126,24 @@ void merge_insert_sort(T* container, int p, int r)
 	if (r - p > K)
 	{
 		int q = (r - p) / 2;
+		std::cout << "left:";
 		merge_insert_sort(container, p, q);
+		std::cout << "\n";
+		std::cout << "right:";
 		merge_insert_sort(container, q + 1, r);
+		std::cout << "\n";
 		merge_sort(container, p, q, r);
+		std::cout << "\n";
 	}
 	else
+	{	
 		insert_sort(container);
+		std::cout << "\n";
+	}
 }
 
 template <typename T>
-void print_time(int count, char* container_type, void (*f)(T*container, int p, int r))
+void print_time(int count, std::string container_type, void (*f)(T* container, int p, int r), T* container, int p, int r)
 {
 	struct timeval start, end;
 	
@@ -147,7 +158,7 @@ void print_time(int count, char* container_type, void (*f)(T*container, int p, i
     long microseconds = end.tv_usec - start.tv_usec;
     double elapsed_time = static_cast<double>(seconds) + static_cast<double>(microseconds) / 1000000.0;
 	
-	std::cout << " : " << elapsed_time << " us\n";
+	std::cout << " : " << std::fixed << elapsed_time << " us\n";
 }
 
 int convert_to_int(char *input);
