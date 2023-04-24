@@ -6,21 +6,27 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/20 13:35:21 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/03/20 16:07:41 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/04/20 14:02:47 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
+// ========================= CONSTRUCTORS ============================
 RPN::RPN() {}
-RPN::RPN(const std::string expression): _expression(expression) {}
 
-RPN::RPN(const RPN& that): _expression(that._expression) 
+RPN::RPN(std::string expression): _expression(expression) {}
+
+RPN::RPN(const RPN& that): _expression(that._expression)
 {
 	*this = that;
 }
 
+// ========================== DESTRUCTORS ============================
+
 RPN::~RPN() {}
+
+// ====================== ASSIGNMENT OPERATOR ========================
 
 RPN& RPN::operator=(const RPN& that)
 {
@@ -28,15 +34,36 @@ RPN& RPN::operator=(const RPN& that)
 	return (*this);
 }
 
+// =========================== EXCEPTIONS ============================
+
+const char* RPN::DivisionByZeroException::what() const _NOEXCEPT
+{
+	return ("division by zero");
+}
+
+const char* RPN::BadInputException::what() const _NOEXCEPT
+{
+	return ("bad input");
+}
+
+const char* RPN::InvalidCalculationException::what() const _NOEXCEPT
+{
+	return ("invalid calculation");
+}
+
+// =========================== CONVERSION ============================
+
 bool RPN::is_digit(const char *str)
 {
 	char *pEnd;
 	
 	strtol(str, &pEnd, 10);
-    if (*pEnd != '\0')
+	if (*pEnd != '\0')
 		return (false);
-    return (true);
+	return (true);
 }
+
+// =========================== CALCULATION ============================
 
 void RPN::execute_operation(char c, int a, int b)
 {
@@ -62,7 +89,7 @@ void RPN::execute_operation(char c, int a, int b)
 
 void RPN::calculate(void)
 {
-    std::string token;
+	std::string token;
 	std::istringstream ss(this->_expression);
 
 	while (ss >> token)
@@ -87,5 +114,9 @@ void RPN::calculate(void)
 			execute_operation(token[0], a, b);
 		}
 	}
+	if (this->_calculation.empty())
+		throw BadInputException();
+	if (this->_calculation.size() != 1)
+		throw InvalidCalculationException();
 	std::cout << this->_calculation.top() << '\n';
 }

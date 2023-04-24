@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/20 13:35:26 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/03/20 16:10:11 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/04/20 14:02:45 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 class RPN {
 	private:
-		std::stack<int> _calculation;
-		const std::string _expression;
+		std::stack<int>		_calculation;
+		std::string			_expression;
 		
 		RPN();
 		
@@ -34,19 +34,19 @@ class RPN {
 		RPN& operator=(const RPN& that);
 		
 		class DivisionByZeroException: public std::exception {
-            public:
-                const char* what() const throw() {return "division by zero";};
-        };
+			public:
+				const char* what() const _NOEXCEPT;
+		};
 		
 		class BadInputException: public std::exception {
-            public:
-                const char* what() const throw() {return "bad input";};
-        };
+			public:
+				const char* what() const _NOEXCEPT;
+		};
 		
 		class InvalidCalculationException: public std::exception {
-            public:
-                const char* what() const throw() {return "invalid calculation";};
-        };
+			public:
+				const char* what() const _NOEXCEPT;
+		};
 		
 		bool	is_digit(const char *str);
 		void	execute_operation(char c, int a, int b);
