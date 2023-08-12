@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/20 13:35:21 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/04/20 14:02:47 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/06/25 13:11:49 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ RPN& RPN::operator=(const RPN& that)
 
 // =========================== EXCEPTIONS ============================
 
-const char* RPN::DivisionByZeroException::what() const _NOEXCEPT
+const char* RPN::DivisionByZeroException::what() const throw()
 {
 	return ("division by zero");
 }
 
-const char* RPN::BadInputException::what() const _NOEXCEPT
+const char* RPN::BadInputException::what() const throw()
 {
 	return ("bad input");
 }
 
-const char* RPN::InvalidCalculationException::what() const _NOEXCEPT
+const char* RPN::InvalidCalculationException::what() const throw()
 {
 	return ("invalid calculation");
 }

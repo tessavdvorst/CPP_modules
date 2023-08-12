@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/17 12:05:53 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/03/20 13:19:41 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/06/25 12:04:49 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,43 @@ float str_to_float(std::string str)
 	return (val);
 }
 
-bool is_valid_date(std::vector<int> date)
+int str_to_int(std::string str)
 {
-	if (date[0] < 0)
+	char *pEnd;
+	
+	long int i = strtol(str.c_str(), &pEnd, 10);
+    if (*pEnd != '\0' || (i < INT_MIN || i > INT_MAX))
+		throw std::invalid_argument("invalid input in csv file");
+	int i_value = static_cast<int>(i);
+	return (i_value);
+}
+
+bool is_valid_date(int year, int month, int day)
+{
+	if (year < 0)
 		return (false);
-	if (date[1] < 0 || date[1] > 12)
+	if (month < 0 || month > 12)
 		return (false);
 
-	if (date[1] == 2) {
-		if (date[0] % 4 == 0) {
-			if (date[2] > 29 || date[2] < 0)
+	if (month == 2) {
+		if (year % 4 == 0) {
+			if (day > 29 || day < 0)
 				return (false);
 		}
 		else {
-			if (date[2] > 28 || date[2] < 0)
+			if (day > 28 || day < 0)
 				return (false);
 		}
 	}
-	else if (date[1] == 1 || date[1] == 3
-			|| date[1] == 5 || date[1] == 7
-			|| date[1] == 8 || date[1] == 10
-			|| date[1] == 12) {
-		if (date[2] > 31 || date[2] < 0)
+	else if (month == 1 || month == 3
+			|| month == 5 || month == 7
+			|| month == 8 || month == 10
+			|| month == 12) {
+		if (day > 31 || day < 0)
 			return (false);
 	}
 	else {
-		if (date[2] > 30 || date[2] < 0)
+		if (day > 30 || day < 0)
 			return (false);
 	}
 	return (true);

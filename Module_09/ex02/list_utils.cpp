@@ -1,19 +1,19 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   list_utils.cpp                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/03/30 15:25:35 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/04/01 18:53:28 by Tessa         ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
+// /* ************************************************************************** */
+// /*                                                                            */
+// /*                                                        ::::::::            */
+// /*   list_utils.cpp                                     :+:    :+:            */
+// /*                                                     +:+                    */
+// /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
+// /*                                                   +#+                      */
+// /*   Created: 2023/03/30 15:25:35 by tvan-der      #+#    #+#                 */
+// /*   Updated: 2023/07/22 14:26:56 by Tessa         ########   odam.nl         */
+// /*                                                                            */
+// /* ************************************************************************** */
 
-#include "list_utils.hpp"
-#include <iostream>
+// #include "list_utils.hpp"
+// #include <iostream>
 
-// void fill(std::list<int> list, std::list<int>* new_list, int start, int end)
+// void list_fill(std::list<int> list, std::list<int>* new_list, int start, int end)
 // {
 // 	std::list<int>::iterator it_start = list.begin();
 // 	std::advance(it_start, start);
@@ -22,13 +22,13 @@
 // 	new_list->insert(new_list->end(), it_start, it_end);
 // }
 
-// void insert_sort(std::list<int>* list) 
+// void list_insert_sort(std::list<int> *l, int begin, int end)
 // {
-// 	for (std::list<int>::iterator it = list->begin(); it != list->end(); ++it)
+// 	for (std::list<int>::iterator it = l->begin(); it != l->end(); ++it)
 // 	{
-// 		int temp = *it;
-// 		std::list<int>::iterator insertionPoint = list->begin();
-// 		while (insertionPoint != it && *insertionPoint < temp) {
+// 		int key = *it;
+// 		std::list<int>::iterator insertionPoint = l->begin();
+// 		while (insertionPoint != it && *insertionPoint < key) {
 // 			++insertionPoint;
 // 		}
 // 		for (std::list<int>::iterator j = it; j != insertionPoint; --j) {
@@ -36,16 +36,16 @@
 // 			prev--;
 // 			*j = *prev;
 // 		}
-// 		*insertionPoint = temp;
+// 		*insertionPoint = key;
 // 	}
 // }
 
-// void merge_sort(std::list<int>* l, int p, int q, int r)
+// void list_merge_sort(std::list<int>* l, int p, int q, int r)
 // {
 // 	std::list<int> left, right;
 	
-// 	fill(*l, &left, p, q);
-// 	fill(*l, &right, q + 1, r);
+// 	list_fill(*l, &left, p, q);
+// 	list_fill(*l, &right, q + 1, r);
 	
 // 	//erase contents list
 // 	l->erase(l->begin(), l->end());
@@ -80,15 +80,19 @@
 // 	}
 // }
 
-// void merge_insert_sort(std::list<int>* list, int p, int r)
+// void list_merge_insert_sort(std::list<int> *l, int begin, int end)
 // {
-// 	if (r - p > K)
+// 	print_container(*l);
+// 	std::cout << "begin = " << begin << " and end = " << end << '\n';
+// 	if (end - begin > K)
 // 	{
-// 		int q = (r - p) / 2;
-// 		merge_insert_sort(list, p, q);
-// 		merge_insert_sort(list, q + 1, r);
-// 		merge_sort(list, p, q, r);
+// 		int middle = (end - begin) / 2;
+// 		list_merge_insert_sort(l, begin, middle);
+// 		// print_container(*l);
+// 		list_merge_insert_sort(l, middle + 1, end);
+// 		// print_container(*l);
+// 		list_merge_sort(l, begin, middle, end);
 // 	}
 // 	else
-// 		insert_sort(list);
+// 		list_insert_sort(l, begin, end);
 // }

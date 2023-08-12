@@ -6,11 +6,13 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/15 14:31:11 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/03/20 13:28:36 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/06/25 12:59:56 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+// ========================= CONSTRUCTORS ============================
 
 BTC::BTC() {
 	if (!init_database())
@@ -27,7 +29,11 @@ BTC::BTC(const BTC& that): _fileName(that._fileName)
 	*this = that;
 }
 
+// ========================== DESTRUCTORS ============================
+
 BTC::~BTC() {}
+
+// ====================== ASSIGNMENT OPERATOR ========================
 
 BTC& BTC::operator=(const BTC& that)
 {
@@ -35,38 +41,119 @@ BTC& BTC::operator=(const BTC& that)
 	return (*this);
 }
 
-std::pair<std::vector<int>, float> BTC::split_into_pair(std::string entry, char d)
+// =========================== EXCEPTIONS ============================
+
+const char* BTC::InvalidDatabaseException::what() const throw()
+{
+	return ("could not load database");
+}
+const char* BTC::InvalidFileException::what() const throw()
+{
+	return ("could not open file");
+}
+
+const char* BTC::NoDataFoundException::what() const throw()
+{
+	return ("no data found on this date");
+}
+
+BTC::InvalidSyntaxException::InvalidSyntaxException(ErrorCode err): _err(err) {}
+
+ErrorCode BTC::InvalidSyntaxException::getErrorCode() const
+{
+	return (this->_err);
+}
+
+// =========================== PARSE FUNC ============================
+
+int BTC::parse_date_to_int(std::string str)
+{
+	str.erase(std::remove(str.begin(), str.end(), '-'), str.end());
+	return (str_to_int(str));
+}
+
+std::pair<int, float> BTC::parse_database_entry(std::string entry, char d)
 {
 	float value = 0.0;
-	std::string str_date;
-	std::vector<int> date;
+	int date = 0;
 	size_t delim = entry.find_first_of(d, 0);
 	
 	if (delim != std::string::npos)
 	{
-		str_date = entry.substr(0, delim);
-		split_into_vector(str_date, '-', date);
+		date = parse_date_to_int(entry.substr(0, delim));
 		value = str_to_float(entry.substr(delim + 1, entry.size() - 1));
 	}
 	return (std::make_pair(date, value));
 }
 
-void BTC::fill_in_between_days(std::string line)
+std::pair<std::string, float> BTC::parse_input_entry(std::string entry)
 {
-	std::string str_date;
-	std::vector<int> date;
-	size_t delim = line.find_first_of(',', 0);
-	str_date = line.substr(0, delim);
-	float value = str_to_float(line.substr(delim + 1, line.size() - 1));
-	split_into_vector(str_date, '-', date);
+	if (std::count(entry.begin(), entry.end(), ' ') != 2)
+		throw InvalidSyntaxException(BAD_INPUT);
 	
-	for (int i = 0; i < 2; i++)
-	{
-		date[2] += 1;
-		if (is_valid_date(date))
-			this->_database.insert(std::make_pair(date, value));
-	}
+	float amount = 0.0;
+	std::string str, date;
+	std::stringstream ss(entry);
+	
+	getline(ss, str, ' ');
+	check_date(str);
+	date = str;
+	getline(ss, str, ' '); //delim
+	getline(ss, str, ' ');
+	amount = check_amount(str);
+	
+	return (std::make_pair(date, amount));
 }
+
+std::string BTC::check_date(std::string date)
+{
+	if (std::count(date.begin(), date.end(), '-') != 2)
+		throw InvalidSyntaxException(BAD_INPUT);
+	
+	int year, month, day = 0;
+	std::string str;
+	std::stringstream ss(date);
+	
+	getline(ss, str, '-');
+	year = str_to_int(str);
+	getline(ss, str, '-');
+	month = str_to_int(str);
+	getline(ss, str, ' ');
+	day = str_to_int(str);
+
+	if ( !is_valid_date(year, month, day) 
+		|| year < 2009 || year > 2022
+		|| (year == 2022 && month >= 3 && day > 29))
+			throw InvalidSyntaxException(BAD_INPUT);
+	return (date);
+}
+
+float BTC::check_amount(std::string str)
+{
+	float amount = str_to_float(str);
+	if (amount < 0)
+		throw InvalidSyntaxException(NON_POSITIVE);
+	if (amount > 1000)
+		throw InvalidSyntaxException(TOO_LARGE);
+	return (amount);
+}
+
+float BTC::get_price(int date)
+{
+	std::map<int, float>::iterator it = this->_database.begin();
+	
+	for (; it != this->_database.end(); it++)
+	{
+		if (it->first > date)
+		{
+			std::map<int, float>::iterator prev = std::prev(it);
+			return (prev->second);
+		}
+	}
+	throw NoDataFoundException();
+}
+
+// ============================ INIT FUNC ============================
 
 bool BTC::init_database(void)
 {
@@ -77,82 +164,15 @@ bool BTC::init_database(void)
 		return (false);
 	getline(file, line);
 	while (getline(file, line))
-	{
-		this->_database.insert(split_into_pair(line, ','));
-		fill_in_between_days(line);
-	}
+		this->_database.insert(parse_database_entry(line, ','));
 	file.close();
 	return (true);
 }
 
-void BTC::check_syntax(std::string line)
+void BTC::display_output(std::pair<std::string, float> entry)
 {
-	std::vector<int> date;
-	std::vector<std::string> entry;
-	
-	split_into_vector(line, '|', entry);
-	if (entry.size() != 2)
-		throw InvalidSyntaxException(BAD_INPUT);
-	
-	split_into_vector(entry[0], '-', date);
-	check_date(date);
-	check_amount(entry[1]);
-}
-
-void BTC::check_date(std::vector<int> date)
-{
-	if (date.size() != 3
-		|| date[0] < 2009 || date[0] > 2022
-		|| !is_valid_date(date)
-		|| (date[0] == 2022 && date[1] >= 3 && date[2] > 29))
-			throw InvalidSyntaxException(BAD_INPUT);
-}
-
-void BTC::check_amount(std::string str)
-{
-	float amount = str_to_float(str);
-	if (amount < 0)
-		throw InvalidSyntaxException(NON_POSITIVE);
-	if (amount > 1000)
-		throw InvalidSyntaxException(TOO_LARGE);
-}
-
-float BTC::get_price(std::vector<int> date)
-{
-	std::map<std::vector<int>, float>::iterator it = this->_database.find(date);
-	
-	if (it == this->_database.end())
-	{
-		std::map<std::vector<int>, float>::iterator prev = std::prev(it);
-		if (it == this->_database.end())
-			throw NoDataFoundException();
-		return (prev->second);
-	}
-	return (it->second);
-}
-
-void BTC::display_output(std::string entry)
-{
-	std::vector<int> date;
-	std::string str_date = get_date(entry);
-	float amount = get_amount(entry);
-	
-	split_into_vector(str_date, '-', date);
-	std::cout << str_date << " => " << amount << " = " << (amount * get_price(date)) << '\n';
-}
-
-std::string BTC::get_date(std::string entry)
-{
-	std::string date = entry.substr(0, entry.find_first_of('|', 0));
-	erase_whitespace_chars_both_sides(date);
-	return (date);
-}
-
-float BTC::get_amount(std::string entry)
-{
-	std::string amount = entry.substr(entry.find_first_of('|', 0) + 1);
-	erase_whitespace_chars_both_sides(amount);
-	return (str_to_float(amount));
+	int date = parse_date_to_int(entry.first);
+	std::cout << entry.first << " => " << entry.second << " = " << (entry.second * get_price(date)) << '\n';
 }
 
 bool BTC::load_file(void)
@@ -166,8 +186,8 @@ bool BTC::load_file(void)
 	while (getline(file, line))
 	{
 		try {
-			check_syntax(line);
-			display_output(line);
+			std::pair<std::string, float> entry = parse_input_entry(line);
+			display_output(entry);
 		} catch (const InvalidSyntaxException &e) {
 			handle_exception(e.getErrorCode(), line);
 		} catch (const NoDataFoundException &e) {
@@ -179,6 +199,8 @@ bool BTC::load_file(void)
 	file.close();
 	return (true);
 }
+
+// ======================== EXCEPTION HANDLER ========================
 
 void BTC::handle_exception(ErrorCode err, std::string line)
 {

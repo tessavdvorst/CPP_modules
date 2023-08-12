@@ -6,11 +6,19 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:23:01 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/04/23 22:53:42 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/08/12 22:31:23 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
+#include "utils.hpp"
+#include "list_utils.hpp"
+#include "vector_utils.hpp"
+
+/*
+This sorting technique combines merging (like in merge-sort) and binary-search-insertion (like in insertion-sort),
+but, it is able to achieve better worst-case performance by selecting which elements to compare,
+as a result of this it will maximize the efficiency and decreases the time compleity of algorithm.
+*/
 
 int main(int argc, char *argv[])
 {
@@ -18,21 +26,27 @@ int main(int argc, char *argv[])
 		std::cout << "Error: nothing to be sorted\n";
 	else
 	{
-		std::deque<int> d;
+		std::vector<int> v;
 		std::list<int> l;
 		try {
-			store_args(argc, argv, &l, &d);
-			std::cout << "Before (list): ";
-			print_container(l);
-			// std::cout << "Before (deque): ";
-			// print_container(d);
-			// print_time(argc - 1, "list", merge_insert_sort, &l, 0, l.size() - 1);
-			// print_time(argc - 1, "deque", merge_insert_sort, &d, 0, d.size() - 1);
-			merge_insert_sort(&l, 0, l.size() - 1);
-			std::cout << "After (list): ";
-			print_container(l);
-			// std::cout << "After (deque): ";
-			// print_container(d);
+			StoreArgs(argc, argv, &l, &v);
+			std::cout << "Before: ";
+			PrintContainer(v);
+			
+			struct timeval start, end;
+			gettimeofday(&start, NULL);
+			std::vector<int> sorted_vec = VectorMergeInsertSort(v);
+			gettimeofday(&end, NULL);
+			
+			std::cout << "After: ";
+			PrintContainer(sorted_vec);
+			
+			PrintTime(v.size(), start, end, "vector");
+			// gettimeofday(&start, NULL);
+			// std::list<int> sorted_vec = ListMergeInsertSort(l);
+			// gettimeofday(&end, NULL);
+			// PrintTime(l.size(), start, end, "list");
+
 		} catch (const std::exception &e) {
 			std::cout << "Error: " << e.what() << '\n';
 		}

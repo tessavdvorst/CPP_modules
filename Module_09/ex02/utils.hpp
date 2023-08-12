@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   PmergeMe.hpp                                       :+:    :+:            */
+/*   utils.hpp                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/20 16:12:05 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/03/30 15:03:23 by tvan-der      ########   odam.nl         */
+/*   Updated: 2023/08/12 22:32:59 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,27 @@
 # define PMERGEME_HPP
 
 #include <iostream>
-#include "IntDeque.hpp"
-#include "IntList.hpp"
+#include <iomanip>
+#include <exception>
+#include <sys/time.h>
+#include <list>
+#include <vector>
 
-#define K 5
+typedef std::pair<int, int> pair;
 
-bool check_duplicates(char **input, int size);
-int convert_to_int(char *input);
-void store_args(int argc, char **argv, IntList *l);//, MyDeque<int> *d);
-// void sort_containers(int count, MyList *l);//, MyDeque<int> *d);
-// void print_time(int count, std::string container_type, long time);
+template <typename T>
+void PrintContainer(T container)
+{
+	typename T::iterator it = container.begin();
+	for (; it != container.end(); it++)
+		std::cout << *it << ' ';
+	std::cout << '\n';
+}
+
+int ConvertToInt(char *input);
+void StoreArgs(int argc, char **argv, std::list<int> *l, std::vector<int> *v);
+void PrintTime(int size, struct timeval start, struct timeval end, std::string container_type);
+
 
 #endif
+
