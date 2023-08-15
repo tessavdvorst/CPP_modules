@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/20 16:12:05 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/08/12 22:32:59 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/08/15 21:21:25 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void PrintContainer(T container)
 	std::cout << '\n';
 }
 
-int ConvertToInt(char *input);
-void StoreArgs(int argc, char **argv, std::list<int> *l, std::vector<int> *v);
-void PrintTime(int size, struct timeval start, struct timeval end, std::string container_type);
-
+int					ConvertToInt(char *input);
+void				StoreArgs(int argc, char **argv, std::list<int> *l, std::vector<int> *v);
+int					jacobsthal(int n);
+void				PrintTime(int size, struct timeval start, struct timeval end, std::string container_type);
 
 #endif
 

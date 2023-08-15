@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/15 14:31:07 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/06/25 12:57:46 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/08/14 20:59:46 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ class BTC {
 		BTC& operator=(const BTC& that);
 
 		class InvalidDatabaseException: public std::exception {
-            public:
-                const char* what() const throw();
-        };
+			public:
+				const char* what() const throw();
+		};
 		
 		class InvalidFileException: public std::exception {
-            public:
-                const char* what() const throw();
-        };
+			public:
+				const char* what() const throw();
+		};
 		
 		class NoDataFoundException: public std::exception {
-            public:
-                const char* what() const throw();
-        };
+			public:
+				const char* what() const throw();
+		};
 
 		class InvalidSyntaxException: public std::exception {
 			private:

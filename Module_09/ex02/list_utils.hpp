@@ -10,15 +10,11 @@
 // /*                                                                            */
 // /* ************************************************************************** */
 
-// #ifndef LIST_UTILS_HPP
-// # define LIST_UTILS_HPP
+#ifndef LIST_UTILS_HPP
+# define LIST_UTILS_HPP
 
-// #include <list>
-// #include "utils.hpp"
+#include <list>
 
-// #define K 5
+std::list<int> ListMergeInsertSort(std::list<int> l);
 
-// void list_merge_insert_sort(std::list<int> *l, int begin, int end);
-
-
-// #endif
+#endif

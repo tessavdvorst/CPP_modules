@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/15 14:31:11 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/06/25 12:59:56 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/08/15 21:06:10 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ std::pair<std::string, float> BTC::parse_input_entry(std::string entry)
 	getline(ss, str, ' ');
 	check_date(str);
 	date = str;
-	getline(ss, str, ' '); //delim
+	getline(ss, str, ' '); //skip delim
 	getline(ss, str, ' ');
 	amount = check_amount(str);
 	

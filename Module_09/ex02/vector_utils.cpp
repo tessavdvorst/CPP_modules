@@ -6,13 +6,12 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/08 20:47:47 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/08/12 22:23:09 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/08/15 19:55:20 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector_utils.hpp"
 #include "utils.hpp"
-#include <iostream>
+#include "vector_utils.hpp"
 
 std::vector<pair> VectorCreatePairs(std::vector<int> v)
 {
@@ -49,17 +48,9 @@ void VectorInsertSortPairs(std::vector<pair>& pairs, int size)
 
 	while (j >= 0 && pairs[j].second > last.second)
 	{
-		pairs[j + 1] = pairs[j];
+		std::swap(pairs[j], pairs[j + 1]);
 		j--;
 	}
-	pairs[j + 1] = last;
-}
-
-int jacobsthal(int n)
-{
-	if (n == 0 || n == 1)
-		return (n);
-	return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
 }
 
 std::vector<int> VectorGenerateJacobsthalSequence(std::vector<int> v)
@@ -76,6 +67,12 @@ std::vector<int> VectorGenerateJacobsthalSequence(std::vector<int> v)
 	return sequence;
 }
 
+void VectorInsert(std::vector<int>& v, int n)
+{
+	std::vector<int>::iterator iterator = std::lower_bound(v.begin(), v.end(), n);
+	v.insert(iterator, n);
+}
+
 void VectorSplitPairs(std::vector<int>& main, std::vector<int>& pend, std::vector<pair> pairs)
 {
 	for (int i = 0; i < static_cast<int>(pairs.size()); i++)
@@ -84,61 +81,42 @@ void VectorSplitPairs(std::vector<int>& main, std::vector<int>& pend, std::vecto
 		pend.push_back(pairs[i].first);
 	}
 
-	// we know for sure the smallest element in pend is smaller than the smallest element in main
-	// because they used to be a pair
 	main.insert(main.begin(), pend[0]);
-}
-
-void VectorInsert(std::vector<int>& v, int n)
-{
-	std::vector<int>::iterator iterator = std::lower_bound(v.begin(), v.end(), n);
-	int insertion_point = std::distance(v.begin(), iterator);
-	v.insert(v.begin() + insertion_point, n);
 }
 
 std::vector<int> VectorMergeSortPairs(std::vector<pair> pair_vec, int straggler)
 {
+	int it = 0;
+	int index = 0;
+	int jacob_index = 1;
 	std::vector<int> main;
 	std::vector<int> pend;
 	
 	VectorSplitPairs(main, pend, pair_vec);
-	
-	int it = 1;
-	int jacob_index = 3;
-	std::vector<int> index_sequence;
-	bool jacob = false;
-	index_sequence.push_back(1);
+	int pend_size = pend.size();
 
 	std::vector<int> jacob_sequence = VectorGenerateJacobsthalSequence(pend);
 
-	while (it <= static_cast<int>(pend.size()))
+	while (it <= static_cast<int>(jacob_sequence.size()))
 	{
-		int item;
-		if (jacob_sequence.size() != 0 && !jacob)
+		if (it == static_cast<int>(jacob_sequence.size()) && pend_size > it)
+			index = pend_size;
+		else
+			index = jacob_sequence[it];
+		while (index > jacob_index)
 		{
-			index_sequence.push_back(jacob_sequence[0]);
-			item = pend[(jacob_sequence[0]) - 1];
-			jacob_sequence.pop_back();
-			jacob = true;
+			int item = pend[index - 1];
+			VectorInsert(main, item);
+			index--;
 		}
-		else {
-			std::vector<int>::iterator iterator = std::find(index_sequence.begin(), index_sequence.end(), it);
-			if (it == 0 || iterator != index_sequence.end())
-				it++;
-			item = pend[it - 1];
-			index_sequence.push_back(it);
-			jacob = false;
-		}
-		
-		VectorInsert(main, item);
-
+		if (it < static_cast<int>(jacob_sequence.size()))
+			jacob_index = jacob_sequence[it];
 		it++;
-		jacob_index++;
 	}
-
+	
 	if (straggler != -1)
 		VectorInsert(main, straggler);
-
+		
 	return main;
 }
 
@@ -156,6 +134,5 @@ std::vector<int> VectorMergeInsertSort(std::vector<int> v)
 	VectorSortPairs(splitted_vec);
 	VectorInsertSortPairs(splitted_vec, splitted_vec.size());
 	std::vector<int> sorted_vec = VectorMergeSortPairs(splitted_vec, straggler);
-	PrintContainer(sorted_vec);
 	return sorted_vec;
 }

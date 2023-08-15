@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/17 12:05:53 by tvan-der      #+#    #+#                 */
-/*   Updated: 2023/06/25 12:04:49 by Tessa         ########   odam.nl         */
+/*   Updated: 2023/08/14 20:59:08 by Tessa         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void erase_whitespace_chars_both_sides(std::string& str)
 {
-    str.erase(0, str.find_first_not_of(" \t\r\n\v\f"));
-    str.erase(str.find_last_not_of(" \t\r\n\v\f") + 1);
+	str.erase(0, str.find_first_not_of(" \t\r\n\v\f"));
+	str.erase(str.find_last_not_of(" \t\r\n\v\f") + 1);
 }
 
 float str_to_float(std::string str)
@@ -33,7 +33,7 @@ int str_to_int(std::string str)
 	char *pEnd;
 	
 	long int i = strtol(str.c_str(), &pEnd, 10);
-    if (*pEnd != '\0' || (i < INT_MIN || i > INT_MAX))
+	if (*pEnd != '\0' || (i < INT_MIN || i > INT_MAX))
 		throw std::invalid_argument("invalid input in csv file");
 	int i_value = static_cast<int>(i);
 	return (i_value);
